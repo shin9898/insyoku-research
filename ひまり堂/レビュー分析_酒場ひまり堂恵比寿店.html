@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>口コミ分析｜酒場 ひまり堂 恵比寿店</title>
+<style>
+  :root{
+    --ink:#1f2328; --sub:#5b6168; --line:#e7e3db; --paper:#fbf9f5; --card:#fff;
+    --accent:#b5482e; --accent2:#0a5a9c; --gold:#c79a3a; --good:#2f8f5b; --warn:#c0631e;
+    --b1:#b5482e; --b2:#d98a3d; --b3:#0a5a9c;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1060px;margin:0 auto;padding:20px 16px calc(56px + env(safe-area-inset-bottom));}
+  header.hero{color:#fff;border-radius:18px;padding:26px 26px 22px;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#3a1a12,#7a2c1a);box-shadow:0 12px 30px rgba(60,20,10,.18);}
+  .eyebrow{font-size:12px;letter-spacing:.16em;color:#f7d3b6;font-weight:700;}
+  h1{margin:7px 0 6px;font-size:clamp(22px,5.6vw,30px);}
+  .hsub{color:#f2dccd;font-size:clamp(12.5px,3.3vw,14px);}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 6px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;}
+  .stat .k{font-size:11.5px;color:var(--sub);font-weight:600;}
+  .stat .v{font-size:clamp(17px,4.6vw,23px);font-weight:800;margin-top:3px;color:var(--accent);}
+  .stat .v small{font-size:12px;color:var(--ink);font-weight:600;}
+  section{margin-top:26px;}
+  h2{font-size:clamp(16px,4.4vw,19px);margin:0 0 5px;padding-left:12px;border-left:5px solid var(--accent);}
+  .lead{font-size:13px;color:var(--sub);margin:0 0 14px;padding-left:12px;}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  /* bars */
+  .bars{display:flex;flex-direction:column;gap:11px;}
+  .bar{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:center;}
+  .bar .lab{font-size:13px;font-weight:600;text-align:right;color:#3a3f45;}
+  .bar .track{background:#f0ece4;border-radius:8px;height:24px;position:relative;overflow:hidden;}
+  .bar .fill{height:100%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;
+    padding-right:9px;color:#fff;font-size:11.5px;font-weight:700;white-space:nowrap;min-width:34px;}
+  .c1{background:linear-gradient(90deg,#c2533a,#b5482e);}
+  .c2{background:linear-gradient(90deg,#e0a04f,#d98a3d);}
+  .c3{background:linear-gradient(90deg,#3a82b8,#0a5a9c);}
+  .barnote{font-size:11.5px;color:var(--sub);margin-top:10px;}
+  /* two col cards */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .col{border-radius:14px;padding:15px 16px;border:1px solid var(--line);}
+  .col.good{background:#f1f8f3;border-color:#cfe7d8;}
+  .col.warn{background:#fdf4ec;border-color:#f0dcc7;}
+  .col h3{margin:0 0 9px;font-size:14.5px;}
+  .col.good h3{color:var(--good);} .col.warn h3{color:var(--warn);}
+  .col ul{margin:0;padding-left:18px;} .col li{margin:6px 0;font-size:13px;}
+  /* quotes */
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;}
+  .quote{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:0 12px 12px 0;padding:13px 15px;box-shadow:0 2px 6px rgba(40,30,20,.04);}
+  .quote .tag{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--accent);
+    border-radius:6px;padding:1px 8px;margin-bottom:7px;}
+  .quote .tag.b{background:var(--accent2);} .quote .tag.g{background:var(--good);} .quote .tag.w{background:var(--warn);}
+  .quote .ttl{font-size:13px;font-weight:700;margin-bottom:4px;}
+  .quote p{margin:0;font-size:12.5px;color:#42474d;}
+  /* insight */
+  .insight{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 4px;}
+  .insight .row{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid #f0ece4;}
+  .insight .row:last-child{border-bottom:none;}
+  .insight .ic{flex:none;width:30px;height:30px;border-radius:9px;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;}
+  .insight .tx{font-size:13.5px;} .insight .tx b{color:var(--accent);}
+  footer{margin-top:30px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--sub);}
+  footer a{color:var(--accent2);}
+  @media(max-width:760px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .duo,.quotes{grid-template-columns:1fr;}
+    .bar{grid-template-columns:96px 1fr;gap:8px;}
+    .bar .lab{font-size:12px;}
+    .wrap{padding:14px 12px 48px;}
+    header.hero{padding:22px 18px;}
+  }
+</style></head><body><div class="wrap">
+  <header class="hero"><div class="eyebrow">食べログ 口コミ分析レポート</div>
+    <h1>酒場 ひまり堂 恵比寿店</h1>
+    <div class="hsub">取得できた口コミ 243件を解析（本文243件・点数付162件）／ 総口コミ 715件・総合 3.45点</div></header>
+  <div class="stats">
+    <div class="stat"><div class="k">解析サンプル</div><div class="v">243<small> /715件</small></div></div>
+    <div class="stat"><div class="k">総合点</div><div class="v">3.45<small> 点</small></div></div>
+    <div class="stat"><div class="k">最頻トピック</div><div class="v" style="font-size:16px">予約・人気<small> 54%</small></div></div>
+    <div class="stat"><div class="k">看板メニュー</div><div class="v" style="font-size:16px">茹でタン<small> 言及15%</small></div></div></div>
+
+  <section><h2>利用シーン分布</h2>
+    <p class="lead">「誰と・どんな目的で」来ているか。<b>友人＋会社＋宴会＝グループ飲みが主力（合計32%）</b>。デート・女子会も一定数。</p>
+    <div class="panel"><div class="bars">
+      <div class="bar"><div class="lab">友人・仲間</div><div class="track"><div class="fill c1" style="width:100%">30件 / 12%</div></div></div>
+      <div class="bar"><div class="lab">会社・同僚・接待</div><div class="track"><div class="fill c1" style="width:87%">26件 / 11%</div></div></div>
+      <div class="bar"><div class="lab">宴会・大人数</div><div class="track"><div class="fill c1" style="width:73%">22件 / 9%</div></div></div>
+      <div class="bar"><div class="lab">デート・カップル</div><div class="track"><div class="fill c2" style="width:67%">20件 / 8%</div></div></div>
+      <div class="bar"><div class="lab">女子会・女友達</div><div class="track"><div class="fill c2" style="width:47%">14件 / 6%</div></div></div>
+      <div class="bar"><div class="lab">一人飲み</div><div class="track"><div class="fill c2" style="width:7%">2件</div></div></div>
+      <div class="bar"><div class="lab">家族</div><div class="track"><div class="fill c2" style="width:3%">1件</div></div></div>
+    </div><div class="barnote">※1件が複数シーンに該当する場合あり（本文243件中の言及率）。</div></div></section>
+
+  <section><h2>口コミで語られるトピック</h2>
+    <p class="lead">何が話題になりやすいか。<b>「予約・混雑」が最多＝人気の裏返し</b>。料理・雰囲気・立地が続く。</p>
+    <div class="panel"><div class="bars">
+      <div class="bar"><div class="lab">予約・混雑・人気</div><div class="track"><div class="fill c1" style="width:100%">131件 / 54%</div></div></div>
+      <div class="bar"><div class="lab">雰囲気・内装</div><div class="track"><div class="fill c1" style="width:86%">113件 / 47%</div></div></div>
+      <div class="bar"><div class="lab">料理・味</div><div class="track"><div class="fill c1" style="width:85%">111件 / 46%</div></div></div>
+      <div class="bar"><div class="lab">立地・アクセス</div><div class="track"><div class="fill c2" style="width:78%">102件 / 42%</div></div></div>
+      <div class="bar"><div class="lab">コスパ・価格</div><div class="track"><div class="fill c2" style="width:47%">61件 / 25%</div></div></div>
+      <div class="bar"><div class="lab">接客・サービス</div><div class="track"><div class="fill c3" style="width:23%">30件 / 12%</div></div></div>
+    </div><div class="barnote">※キーワード言及ベース。立地は「恵比寿駅／地下」等が定型的に書かれ高めに出る傾向。</div></div></section>
+
+  <section><h2>メニュー言及ランキング</h2>
+    <p class="lead">言及総数では<b>ドリンク系（レモンサワー等）が最多</b>だが、料理単品の看板は<b>茹でタン（言及15%）</b>。名物2品＋酒で語られる。</p>
+    <div class="panel"><div class="bars">
+      <div class="bar"><div class="lab">レモンサワー・酒</div><div class="track"><div class="fill c1" style="width:100%">47件 / 19%</div></div></div>
+      <div class="bar"><div class="lab">茹でタン・牛タン</div><div class="track"><div class="fill c1" style="width:77%">36件 / 15%</div></div></div>
+      <div class="bar"><div class="lab">お通し</div><div class="track"><div class="fill c1" style="width:34%">16件 / 7%</div></div></div>
+      <div class="bar"><div class="lab">鶏の肉汁焼き・鶏</div><div class="track"><div class="fill c2" style="width:26%">12件 / 5%</div></div></div>
+      <div class="bar"><div class="lab">チキン南蛮・揚物</div><div class="track"><div class="fill c2" style="width:15%">7件 / 3%</div></div></div>
+      <div class="bar"><div class="lab">ポテト</div><div class="track"><div class="fill c3" style="width:15%">7件 / 3%</div></div></div>
+      <div class="bar"><div class="lab">わっぱ飯</div><div class="track"><div class="fill c3" style="width:9%">4件</div></div></div>
+      <div class="bar"><div class="lab">デザート・甘味</div><div class="track"><div class="fill c3" style="width:6%">3件</div></div></div>
+      <div class="bar"><div class="lab">アヒージョ・逸品</div><div class="track"><div class="fill c3" style="width:6%">3件</div></div></div>
+    </div><div class="barnote">※本文が一部省略表示のため、実際の注文比率より低めに出る（相対傾向として参照）。</div></div></section>
+
+  <section><h2>時系列：開店からの推移と"改善"</h2>
+    <p class="lead">取得した243件を月別集計（2024/04開店〜2026/06）。<b>棒=取得口コミ件数</b>、<b>線=評価スコアの3か月移動平均</b>。</p>
+    <div class="panel"><svg viewBox="0 0 940 360" width="100%" style="display:block" role="img" aria-label="口コミ件数と評価スコアの推移"><rect width="940" height="360" fill="#fff"/>
+<rect x="623" y="30" width="283" height="260" fill="#c79a3a" opacity="0.10"/><text x="765" y="43" font-size="10.5" fill="#8a6a13" text-anchor="middle" font-weight="700">受賞期</text>
+<line x1="58" y1="267.7" x2="906" y2="267.7" stroke="#eee7db"/><text x="912" y="270.7" font-size="10" fill="#b5482e">3.7</text>
+<line x1="58" y1="164.4" x2="906" y2="164.4" stroke="#eee7db"/><text x="912" y="167.4" font-size="10" fill="#b5482e">3.9</text>
+<line x1="58" y1="61.0" x2="906" y2="61.0" stroke="#eee7db"/><text x="912" y="64.0" font-size="10" fill="#b5482e">4.1</text>
+<text x="50" y="293.0" font-size="10" fill="#9aa0a6" text-anchor="end">0</text>
+<text x="50" y="233.6" font-size="10" fill="#9aa0a6" text-anchor="end">8</text>
+<text x="50" y="174.1" font-size="10" fill="#9aa0a6" text-anchor="end">16</text>
+<text x="50" y="114.7" font-size="10" fill="#9aa0a6" text-anchor="end">24</text>
+<text x="50" y="55.3" font-size="10" fill="#9aa0a6" text-anchor="end">32</text>
+<rect x="64.6" y="59.7" width="18.2" height="230.3" rx="2" fill="#dfc7b4"/>
+<rect x="96.0" y="59.7" width="18.2" height="230.3" rx="2" fill="#dfc7b4"/>
+<rect x="127.4" y="252.9" width="18.2" height="37.1" rx="2" fill="#dfc7b4"/>
+<rect x="158.8" y="208.3" width="18.2" height="81.7" rx="2" fill="#dfc7b4"/>
+<rect x="190.2" y="223.1" width="18.2" height="66.9" rx="2" fill="#dfc7b4"/>
+<rect x="221.6" y="200.9" width="18.2" height="89.1" rx="2" fill="#dfc7b4"/>
+<rect x="253.0" y="252.9" width="18.2" height="37.1" rx="2" fill="#dfc7b4"/>
+<rect x="284.4" y="252.9" width="18.2" height="37.1" rx="2" fill="#dfc7b4"/>
+<rect x="315.9" y="230.6" width="18.2" height="59.4" rx="2" fill="#dfc7b4"/>
+<rect x="347.3" y="230.6" width="18.2" height="59.4" rx="2" fill="#dfc7b4"/>
+<rect x="378.7" y="245.4" width="18.2" height="44.6" rx="2" fill="#dfc7b4"/>
+<rect x="410.1" y="230.6" width="18.2" height="59.4" rx="2" fill="#dfc7b4"/>
+<rect x="441.5" y="238.0" width="18.2" height="52.0" rx="2" fill="#dfc7b4"/>
+<rect x="472.9" y="223.1" width="18.2" height="66.9" rx="2" fill="#dfc7b4"/>
+<rect x="504.3" y="223.1" width="18.2" height="66.9" rx="2" fill="#dfc7b4"/>
+<rect x="535.7" y="238.0" width="18.2" height="52.0" rx="2" fill="#dfc7b4"/>
+<rect x="567.1" y="215.7" width="18.2" height="74.3" rx="2" fill="#dfc7b4"/>
+<rect x="598.5" y="215.7" width="18.2" height="74.3" rx="2" fill="#dfc7b4"/>
+<rect x="629.9" y="215.7" width="18.2" height="74.3" rx="2" fill="#dfc7b4"/>
+<rect x="661.3" y="252.9" width="18.2" height="37.1" rx="2" fill="#dfc7b4"/>
+<rect x="692.7" y="230.6" width="18.2" height="59.4" rx="2" fill="#dfc7b4"/>
+<rect x="724.2" y="245.4" width="18.2" height="44.6" rx="2" fill="#dfc7b4"/>
+<rect x="755.6" y="238.0" width="18.2" height="52.0" rx="2" fill="#dfc7b4"/>
+<rect x="787.0" y="267.7" width="18.2" height="22.3" rx="2" fill="#dfc7b4"/>
+<rect x="818.4" y="252.9" width="18.2" height="37.1" rx="2" fill="#dfc7b4"/>
+<rect x="849.8" y="252.9" width="18.2" height="37.1" rx="2" fill="#dfc7b4"/>
+<rect x="881.2" y="267.7" width="18.2" height="22.3" rx="2" fill="#dfc7b4"/>
+<polyline points="73.7,153.7 105.1,208.9 136.5,221.7 167.9,243.2 199.3,198.4 230.7,186.5 262.1,130.8 293.6,150.3 325.0,181.3 356.4,259.0 387.8,204.2 419.2,183.5 450.6,160.5 482.0,179.2 513.4,171.5 544.8,173.6 576.2,200.5 607.6,167.4 639.0,174.0 670.4,93.7 701.9,139.7 733.3,132.6 764.7,216.4 796.1,177.6 827.5,110.1 858.9,72.2 890.3,61.0" fill="none" stroke="#b5482e" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="73.7" cy="153.7" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="105.1" cy="208.9" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="136.5" cy="221.7" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="167.9" cy="243.2" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="199.3" cy="198.4" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="230.7" cy="186.5" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="262.1" cy="130.8" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="293.6" cy="150.3" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="325.0" cy="181.3" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="356.4" cy="259.0" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="387.8" cy="204.2" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="419.2" cy="183.5" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="450.6" cy="160.5" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="482.0" cy="179.2" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="513.4" cy="171.5" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="544.8" cy="173.6" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="576.2" cy="200.5" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="607.6" cy="167.4" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="639.0" cy="174.0" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="670.4" cy="93.7" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="701.9" cy="139.7" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="733.3" cy="132.6" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="764.7" cy="216.4" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="796.1" cy="177.6" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="827.5" cy="110.1" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="858.9" cy="72.2" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<circle cx="890.3" cy="61.0" r="2.6" fill="#fff" stroke="#b5482e" stroke-width="1.6"/>
+<line x1="73.7" y1="30" x2="73.7" y2="290" stroke="#0a5a9c" stroke-width="1.1" stroke-dasharray="4 3" opacity="0.6"/><text x="77.7" y="56" font-size="10.5" fill="#0a5a9c" font-weight="700">開店 24/04</text>
+<text x="136.5" y="213.7" font-size="10" fill="#9a3b2a" text-anchor="middle" font-weight="700">谷</text>
+<text x="73.7" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">24/04</text>
+<text x="167.9" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">24/07</text>
+<text x="262.1" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">24/10</text>
+<text x="356.4" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">25/01</text>
+<text x="450.6" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">25/04</text>
+<text x="544.8" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">25/07</text>
+<text x="639.0" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">25/10</text>
+<text x="733.3" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">26/01</text>
+<text x="827.5" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">26/04</text>
+<text x="890.3" y="305" font-size="9" fill="#9aa0a6" text-anchor="middle">26/06</text>
+<rect x="58" y="342" width="12" height="10" rx="2" fill="#dfcfb4"/><text x="76" y="351" font-size="10.5" fill="#5b6168">取得口コミ件数（左軸）</text><line x1="228" y1="347" x2="254" y2="347" stroke="#b5482e" stroke-width="2.6"/><text x="260" y="351" font-size="10.5" fill="#5b6168">評価スコア・3か月移動平均（右軸）</text></svg>
+      <div class="barnote">※スコアは各投稿者の5項目平均の合成値（3か月移動平均）。店頭の総合<b>3.45点</b>は食べログの加重アルゴリズム（投稿者の信頼度・新しさ等を加味）で、投稿者の素点平均（≈3.9）とは別物。件数は公開取得分（243/715件）で真の総量ではない点に注意。</div></div>
+    <div class="insight" style="margin-top:14px">
+      <div class="row"><div class="ic">↗</div><div class="tx"><b>緩やかな改善トレンド</b>。開店〜2024年の移動平均 <b>≈3.86</b> → 直近(2025/09以降) <b>≈3.95</b>。2025年後半〜2026年は高めの月が増え<b>ホットレストラン2025・2026受賞</b>と整合。</div></div>
+      <div class="row"><div class="ic">★</div><div class="tx"><b>開店直後に口コミ集中</b>：2024/04-05で<b>62件</b>＝オープン需要。以降は安定。</div></div>
+      <div class="row"><div class="ic">▼</div><div class="tx"><b>2024/06に評価の谷</b>（合成3.60）→その後回復。<b>立て直しが効いた</b>と読める。</div></div>
+      <div class="row"><div class="ic">!</div><div class="tx"><b>取得の限界</b>：非ログインのページ送りは約243件で頭打ち（並び替え・昼夜フィルタを横断しても同じ集合）。本分析は公開分243件がベース。</div></div></div></section>
+
+  <section><h2>項目別スコアの推移（どこが伸びた？）</h2>
+    <p class="lead">5項目を3か月移動平均でプロット。<b>料理・味の伸びが最大（+0.23）</b>、CPは伸び幅最小（-0.1・元々高水準）。</p>
+    <div class="panel"><svg viewBox="0 0 940 372" width="100%" style="display:block" role="img" aria-label="5項目別スコア推移"><rect width="940" height="372" fill="#fff"/>
+<rect x="591" y="34" width="269" height="266" fill="#c79a3a" opacity="0.09"/><text x="725" y="46" font-size="10" fill="#8a6a13" text-anchor="middle" font-weight="700">受賞期</text>
+<line x1="52" y1="263.7" x2="860" y2="263.7" stroke="#eee7db"/><text x="46" y="266.7" font-size="9.5" fill="#9aa0a6" text-anchor="end">3.6</text>
+<line x1="52" y1="215.4" x2="860" y2="215.4" stroke="#eee7db"/><text x="46" y="218.4" font-size="9.5" fill="#9aa0a6" text-anchor="end">3.8</text>
+<line x1="52" y1="167.0" x2="860" y2="167.0" stroke="#eee7db"/><text x="46" y="170.0" font-size="9.5" fill="#9aa0a6" text-anchor="end">4.0</text>
+<line x1="52" y1="118.6" x2="860" y2="118.6" stroke="#eee7db"/><text x="46" y="121.6" font-size="9.5" fill="#9aa0a6" text-anchor="end">4.2</text>
+<line x1="52" y1="70.3" x2="860" y2="70.3" stroke="#eee7db"/><text x="46" y="73.3" font-size="9.5" fill="#9aa0a6" text-anchor="end">4.4</text>
+<line x1="67.0" y1="34" x2="67.0" y2="300" stroke="#0a5a9c" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/><text x="71.0" y="46" font-size="10" fill="#0a5a9c">開店</text>
+<text x="67.0" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">24/04</text>
+<text x="156.7" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">24/07</text>
+<text x="246.5" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">24/10</text>
+<text x="336.3" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">25/01</text>
+<text x="426.1" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">25/04</text>
+<text x="515.9" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">25/07</text>
+<text x="605.6" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">25/10</text>
+<text x="695.4" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">26/01</text>
+<text x="785.2" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">26/04</text>
+<text x="845.0" y="315" font-size="9" fill="#9aa0a6" text-anchor="middle">26/06</text>
+<polyline points="67.0,184.1 96.9,202.6 126.8,200.4 156.7,207.7 186.7,187.0 216.6,176.2 246.5,154.3 276.4,167.0 306.4,183.1 336.3,204.1 366.2,183.9 396.1,154.4 426.1,153.0 456.0,149.0 485.9,164.4 515.9,158.9 545.8,173.7 575.7,165.9 605.6,181.4 635.6,120.9 665.5,110.6 695.4,113.3 725.3,163.0 755.3,179.1 785.2,82.4 815.1,86.4 845.0,46.1" fill="none" stroke="#b5482e" stroke-width="2.2" stroke-linejoin="round" opacity="0.92"/>
+<polyline points="67.0,198.5 96.9,212.2 126.8,232.5 156.7,236.6 186.7,233.1 216.6,202.7 246.5,185.7 276.4,187.8 306.4,220.1 336.3,241.4 366.2,222.6 396.1,203.8 426.1,194.8 456.0,197.5 485.9,190.1 515.9,216.0 545.8,229.5 575.7,207.3 605.6,184.5 635.6,137.4 665.5,189.8 695.4,189.3 725.3,236.3 755.3,196.0 785.2,102.5 815.1,82.4 845.0,46.1" fill="none" stroke="#0a5a9c" stroke-width="2.2" stroke-linejoin="round" opacity="0.92"/>
+<polyline points="67.0,177.7 96.9,219.8 126.8,227.1 156.7,239.0 186.7,210.6 216.6,198.1 246.5,180.2 276.4,189.8 306.4,219.4 336.3,270.2 366.2,227.2 396.1,221.8 426.1,198.1 456.0,220.9 485.9,202.8 515.9,181.8 545.8,175.1 575.7,162.1 605.6,187.0 635.6,146.7 665.5,189.8 695.4,190.4 725.3,250.8 755.3,210.5 785.2,263.7 815.1,163.0 845.0,167.0" fill="none" stroke="#2f8f5b" stroke-width="2.2" stroke-linejoin="round" opacity="0.92"/>
+<polyline points="67.0,183.4 96.9,202.1 126.8,201.3 156.7,214.6 186.7,193.9 216.6,211.3 246.5,178.5 276.4,192.5 306.4,183.1 336.3,214.6 366.2,191.0 396.1,191.0 426.1,184.4 456.0,193.1 485.9,196.5 515.9,201.9 545.8,232.8 575.7,224.5 605.6,206.3 635.6,186.2 665.5,188.5 695.4,198.2 725.3,217.0 755.3,204.9 785.2,195.2 815.1,243.6 845.0,287.9" fill="none" stroke="#c79a3a" stroke-width="2.2" stroke-linejoin="round" opacity="0.92"/>
+<polyline points="67.0,187.2 96.9,223.4 126.8,228.8 156.7,242.4 186.7,210.9 216.6,219.4 246.5,178.5 276.4,185.8 306.4,189.8 336.3,247.1 366.2,224.2 396.1,229.6 426.1,216.7 456.0,230.1 485.9,218.7 515.9,218.7 545.8,229.5 575.7,203.3 605.6,219.4 635.6,199.2 665.5,219.4 695.4,190.4 725.3,210.5 755.3,196.4 785.2,185.1 815.1,165.0 845.0,167.0" fill="none" stroke="#7a4fb0" stroke-width="2.2" stroke-linejoin="round" opacity="0.92"/>
+<line x1="52" y1="355" x2="72" y2="355" stroke="#b5482e" stroke-width="2.6"/><text x="76" y="358" font-size="10.5" fill="#5b6168">料理・味</text>
+<line x1="150" y1="355" x2="170" y2="355" stroke="#0a5a9c" stroke-width="2.6"/><text x="174" y="358" font-size="10.5" fill="#5b6168">接客</text>
+<line x1="224" y1="355" x2="244" y2="355" stroke="#2f8f5b" stroke-width="2.6"/><text x="248" y="358" font-size="10.5" fill="#5b6168">雰囲気</text>
+<line x1="310" y1="355" x2="330" y2="355" stroke="#c79a3a" stroke-width="2.6"/><text x="334" y="358" font-size="10.5" fill="#5b6168">CP</text>
+<line x1="384" y1="355" x2="404" y2="355" stroke="#7a4fb0" stroke-width="2.6"/><text x="408" y="358" font-size="10.5" fill="#5b6168">酒・ドリンク</text>
+</svg>
+      <div class="barnote">※各項目の投稿者平均（3か月移動平均）。月次サンプルが小さい月はノイズを含むため傾向参照。網掛け＝受賞期。</div></div>
+    <div class="insight" style="margin-top:14px"><div class="row"><div class="ic" style="background:#b5482e">料</div><div class="tx">料理・味：開店期 <b>3.92</b> → 直近 <b>4.15</b>（<b>+0.23</b>）</div></div><div class="row"><div class="ic" style="background:#0a5a9c">接</div><div class="tx">接客：開店期 <b>3.82</b> → 直近 <b>4.03</b>（<b>+0.21</b>）</div></div><div class="row"><div class="ic" style="background:#2f8f5b">雰</div><div class="tx">雰囲気：開店期 <b>3.84</b> → 直近 <b>3.93</b>（<b>+0.09</b>）</div></div><div class="row"><div class="ic" style="background:#c79a3a">C</div><div class="tx">CP：開店期 <b>3.88</b> → 直近 <b>3.78</b>（<b>-0.1</b>）</div></div><div class="row"><div class="ic" style="background:#7a4fb0">酒</div><div class="tx">酒・ドリンク：開店期 <b>3.84</b> → 直近 <b>3.88</b>（<b>+0.05</b>）</div></div>
+      <div class="row"><div class="ic">↗</div><div class="tx"><b>読み取り</b>：<b>料理・味（+0.23）と接客</b>が改善を牽引＝立ち上げ後のオペ改善が効いている。雰囲気は当初から高水準、CPは微減（元々高くピークアウト気味）で、「最初から強い項目／後から伸びた項目」が分離して見える。</div></div></div></section>
+
+  <section><h2>総評：良い点 / 気になる点</h2>
+    <p class="lead">総じて<b>高評価</b>（ポジ言及45% / ネガ・改善トーン4%）。改善トーンは下記に集約。</p>
+    <div class="duo">
+      <div class="col good"><h3>◎ よく褒められる点</h3><ul>
+        <li><b>木の温もり×活気の「隠れ家」空間</b>（雰囲気47%）</li>
+        <li><b>茹でタン・鶏の肉汁焼きの満足度</b>（「箸で切れる」「絶品」）</li>
+        <li><b>コスパの良さ</b>（25%）— 「一品が高くない」</li>
+        <li><b>丁寧で気さくな接客</b>（入口案内・先出し説明・サプライズプレート）</li>
+        <li>恵比寿駅<b>徒歩1〜3分</b>の好立地と地下の特別感</li></ul></div>
+      <div class="col warn"><h3>△ 気になる点・改善トーン</h3><ul>
+        <li><b>テラス席の当たり外れ</b>（「予約したのにテラス」「冬は寒い」）</li>
+        <li><b>コース料理の量</b>（「一品が少なめ」「2人前では？」）</li>
+        <li><b>2時間制</b>の時間制限</li>
+        <li><b>予約必須・断られる</b>ほどの混雑（人気の裏返し）</li>
+        <li>人気メニューの入れ替えで「目当てが無い」ことも</li></ul></div></div></section>
+
+  <section><h2>区分別 代表口コミ</h2>
+    <p class="lead">実際の口コミ抜粋（本文は一部省略）。各区分の"生の声"。</p>
+    <div class="quotes">
+      <div class="quote"><span class="tag ">雰囲気</span><div class="ttl">オリジナルのドリンクやデザートが嬉しい</div><p>恵比寿で軽く飲もうという流れになり、以前から気になっていた「酒場 ひまり堂 恵比寿店」へ。地下にあるお店ですが、入ると木の温もりを感じる落ち着いた空間で、カウンター中心の程よく賑わった雰囲気が心地良か...…</p></div>
+      <div class="quote"><span class="tag g">接客</span><div class="ttl">ご近所にこんなお店が</div><p>久々メンバーでの飲み会。気になっていたという事で決まったこちらのお店、家族の家から徒歩数分のお店…知らんかった。全体にお酒が進む濃い目のお味で，ちゃんと（？）お酒が進んでしまいました。スタッフさんの対...…</p></div>
+      <div class="quote"><span class="tag ">名物</span><div class="ttl">看板メニューの牛タンと肉汁焼きは必食！活気あふれるネオ大衆酒場</div><p>賑やかな雰囲気に惹かれて訪問。まずは看板の「国産鶏の肉汁焼き」を注文しましたが、その名の通り溢れる肉汁と鶏の旨味が絶品で、ビールが止まりません！もう一つの主役「超ホロホロの茹でタン」も、箸で簡単に切れ...…</p></div>
+      <div class="quote"><span class="tag b">予約・人気</span><div class="ttl">寒くても大満足</div><p>仕事仲間の4人で集まりました。１週間前に予約していたのに案内されたのはテラス席。2月の冷たい雨の夜。還暦を過ぎた身にはかなり寒かったけど、5000円の飲み放題のコースは大満足でした。特に看板メニューの...…</p></div>
+      <div class="quote"><span class="tag b">会社・宴会</span><div class="ttl">オフィス街の一角に構える隠れ家！</div><p>恵比寿に店を構える「酒場 ひまり堂 恵比寿店」。街の喧騒から少し離れた場所で、落ち着いた空間ながら活気のある雰囲気を楽しめるお店です。木の温もりを感じる店内は居心地がよく、友人や同僚との食事はもちろん...…</p></div>
+      <div class="quote"><span class="tag ">女子会</span><div class="ttl">コスパ最強オシャレ居酒屋！</div><p>ここは男女グループで行っても女子会で行っても最高な店！メニューも一つ一つ高くないし、味は抜群に美味しくて店内も活気に溢れているから話しやすいし、頼んだらサプライズプレートも出してくれました！店員さんの...…</p></div>
+      <div class="quote"><span class="tag g">コスパ</span><div class="ttl">美味しいし、安いし、雰囲気良いし使い勝手の良いお店</div><p>コスパが良くて雰囲気も良くて、味も絶品のお店があると聞いて、ひまり堂さんを訪問。日曜は16時開店ということで16時に予約するも、他にもお客さんはいて、人気店なのが伺える。オススメという、おでん出汁...…</p></div>
+      <div class="quote"><span class="tag w">気になる点</span><div class="ttl">恵比寿で創作和食メニューを楽しむなら、ココ！</div><p>この日の寄り道、恵比寿。予約をして伺ったお店は、最寄駅から3、4分のところにあり、外でもいただけるようなテラス風の席のご用意もあり。冬は寒そう(ブランケットの用意はありそう)ですが、初夏は、気持ち良さ...…</p></div>
+    </div></section>
+
+  <section><h2>示唆（コンセプトシートへの反映）</h2>
+    <div class="insight">
+      <div class="row"><div class="ic">1</div><div class="tx"><b>ターゲット＝グループ飲み</b>が核（友人・会社・宴会で32%）。コース×飲み放題が宴会を取り込み、客単価3,900〜5,000円と整合。</div></div>
+      <div class="row"><div class="ic">2</div><div class="tx"><b>「予約・混雑」最多＝強い集客力</b>。平日夜・週末とも予約前提で満席→満席率・回転の推定を裏付け。</div></div>
+      <div class="row"><div class="ic">3</div><div class="tx"><b>看板は茹でタン一強＋ドリンク</b>。名物2品で引いて酒で滞在を伸ばす設計が口コミにも表れる。</div></div>
+      <div class="row"><div class="ic">4</div><div class="tx"><b>体験価値は「隠れ家×活気×木の温もり」</b>。改善は味・接客が牽引、開店後に底上げ。</div></div>
+      <div class="row"><div class="ic">5</div><div class="tx"><b>改善余地＝テラス席の体験ムラ／コース量</b>。当日はテラス運用と料理ボリュームを要チェック。</div></div></div></section>
+
+  <footer><b>分析方法・注記</b><br>
+    食べログ口コミ一覧を表示件数100件・複数の並び替え/昼夜フィルタ（COND-0/1/2・訪問月順）で横断取得し、レビューIDで一意化。取得できたのは<b>243件（本文243・点数付162）</b>。非ログインでは約243件で頭打ちのため全715件は取得不可。1件が複数区分に該当するため合計は100%を超える。本文は一覧で一部省略表示。総口コミ715件・総合3.45点は2026-06時点。<br>
+    出典：<a href="https://tabelog.com/tokyo/A1303/A130302/13294764/dtlrvwlst/">食べログ 口コミ一覧</a> ／ 作成日 2026-06-19 ／ © TRIPLE THREE inc.（内部検討用）</footer>
+</div></body></html>
