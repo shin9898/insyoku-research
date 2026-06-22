@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>訪問メモ｜ビストロ リタ 新宿店</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --key:#7a2e3b; --key2:#9c4456; --key-tint:#f5e9ec; --line:#e7e2dd;
+    --ink:#23202a; --sub:#6a626a; --paper:#faf7f5; --card:#fff;
+    --good:#1f7a3d; --good-bg:#e7f3ea; --watch:#b5651d; --watch-bg:#fbf1e6;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-feature-settings:"palt";
+    font-family:"Noto Sans JP",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;padding-bottom:96px;}
+  .wrap{max-width:720px;margin:0 auto;padding:16px 14px 40px;}
+  /* sticky top bar */
+  .bar{position:sticky;top:0;z-index:50;background:rgba(250,247,245,.95);backdrop-filter:blur(6px);
+    display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);}
+  .bar a.back{font:600 13px/1 "Noto Sans JP";color:var(--key);text-decoration:none;white-space:nowrap;}
+  .bar .saved{margin-left:auto;font-size:11.5px;color:var(--good);font-weight:700;opacity:0;transition:opacity .3s;}
+  .bar .saved.show{opacity:1;}
+  header.h{padding:18px 2px 6px;}
+  .eyebrow{font-size:11.5px;letter-spacing:.14em;color:var(--key);font-weight:700;}
+  h1{font-family:"Noto Serif JP",serif;font-size:24px;margin:5px 0 3px;color:var(--key);}
+  .hsub{font-size:12.5px;color:var(--sub);}
+  .prog{margin:14px 0 6px;font-size:12px;color:var(--sub);}
+  .prog .pbar{height:8px;border-radius:99px;background:#eee3e6;overflow:hidden;margin-top:5px;}
+  .prog .pfill{height:100%;background:var(--key);width:0;transition:width .25s;}
+  .grp{font-family:"Noto Serif JP",serif;font-size:13px;font-weight:700;color:var(--key);
+    margin:24px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--key-tint);}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 15px;margin-bottom:12px;}
+  .item .q{display:flex;gap:9px;align-items:flex-start;}
+  .item .no{font-family:"Noto Serif JP",serif;color:var(--key);font-weight:700;font-size:15px;flex:none;}
+  .item .qt{font-size:14px;font-weight:700;}
+  .item .hint{margin:7px 0 10px;font-size:12.5px;color:var(--watch);background:var(--watch-bg);
+    border-radius:8px;padding:8px 11px;line-height:1.6;}
+  .item .hint b{color:var(--watch);}
+  textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:15px;
+    font-family:inherit;line-height:1.6;resize:vertical;min-height:62px;background:#fff;color:var(--ink);outline:none;}
+  textarea:focus{border-color:var(--key);}
+  .chk{display:flex;align-items:center;gap:7px;margin-top:9px;font-size:12.5px;color:var(--sub);cursor:pointer;user-select:none;}
+  .chk input{width:18px;height:18px;accent-color:var(--good);}
+  .chk.on{color:var(--good);font-weight:700;}
+  .field{margin-bottom:10px;}
+  .field label{font-size:13px;font-weight:700;display:block;margin-bottom:5px;}
+  .field input[type=text]{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:15px;font-family:inherit;}
+  /* bottom action bar */
+  .actions{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);
+    display:flex;gap:8px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));max-width:720px;margin:0 auto;}
+  .actions button{flex:1;border:none;border-radius:10px;padding:13px 8px;font:700 14px/1 "Noto Sans JP";cursor:pointer;}
+  .btn-copy{background:var(--key);color:#fff;}
+  .btn-dl{background:var(--key-tint);color:var(--key);}
+  .btn-clear{background:#f1f1ee;color:var(--sub);flex:0 0 auto;padding:13px 14px;}
+  .toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:#23202a;color:#fff;
+    font-size:13px;font-weight:700;padding:10px 18px;border-radius:99px;opacity:0;transition:opacity .3s;z-index:70;pointer-events:none;}
+  .toast.show{opacity:1;}
+  .out{margin-top:18px;}
+  .out textarea{min-height:160px;font-size:12.5px;font-family:ui-monospace,Menlo,monospace;color:#333;}
+  .note{font-size:11.5px;color:var(--sub);margin-top:8px;line-height:1.6;}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <a class="back" href="/insyoku-research/index.html">← リサーチ集</a>
+    <a class="back" href="report.html" style="color:var(--sub)">事前レポート</a>
+    <span class="saved" id="saved">✓ 自動保存しました</span>
+  </div>
+
+  <div class="wrap">
+    <header class="h">
+      <div class="eyebrow">訪問メモ ｜ コンセプトシート現地記入</div>
+      <h1>ビストロ リタ 新宿店</h1>
+      <div class="hsub">訪問予定 2026.6.27 ／ 各項目の <b style="color:var(--watch)">▲観点</b> を見ながらメモ。入力は自動保存。最後に「メモをコピー」で共有用テキストを出力。</div>
+      <div class="prog">確認済み <span id="pct">0</span>/<span id="ptot">9</span> 観点<div class="pbar"><div class="pfill" id="pfill"></div></div></div>
+    </header>
+
+    <div id="form"></div>
+
+    <div class="grp">店舗推定（実測・補正）</div>
+    <div class="item">
+      <div class="field"><label>月商（実測/補正の手応え）</label><input type="text" data-est="month" placeholder="例: 平日19時で8割→定常1,400万前後か"></div>
+      <div class="field"><label>満席率（実測）</label><input type="text" data-est="seat" placeholder="例: 19:30で約8割"></div>
+      <div class="field"><label>回転数（体感）</label><input type="text" data-est="turn" placeholder="例: 2時間制で1.8回転ほど"></div>
+    </div>
+
+    <div class="grp">訪問印象・気になった点</div>
+    <div class="item">
+      <textarea data-key="impression" placeholder="全体の第一印象、想定とのズレ、気になった点を自由に"></textarea>
+    </div>
+
+    <div class="grp">訪問後サマリー（狙い vs 現実 ＝ 改善提案）</div>
+    <div class="item">
+      <div class="hint">CSの核心。<b>社長の狙い</b>（高級感ある隠れ家／客単価5,500円の価値／わかりやすい名物）に対し、<b>ターゲット(20-30代)の実際の反応</b>がズレている所を改善提案に。</div>
+      <textarea data-key="proposal" placeholder="例: 高級感の狙いに対し地下の階段が暗く初来店が不安→サイン追加。名物は満足だが○○が弱い 等"></textarea>
+    </div>
+
+    <div class="out">
+      <div class="grp">共有用テキスト（プレビュー）</div>
+      <textarea id="preview" readonly placeholder="「メモをコピー」を押すとここに生成されます"></textarea>
+      <div class="note">このテキストをコピーして「リタ 訪問後 反映して」と一緒に貼ると、report に ✓確認・店舗推定・改善提案が反映されます。</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-copy" id="copy">📋 メモをコピー</button>
+    <button class="btn-dl" id="dl">⬇ .md保存</button>
+    <button class="btn-clear" id="clear">クリア</button>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+  (function(){
+    var STORE = "ビストロ リタ 新宿店";
+    var LSKEY = "insyoku-memo:link-style/bistro-rita";
+    // 事前レポートの ▲当日 観点（9軸）
+    var ITEMS = [
+      {no:"①",t:"業態コンセプト",hint:"“大衆の気軽さ”と“ワンランク上の高級感”が<b>地下空間で両立</b>して伝わるか"},
+      {no:"②",t:"立地・物件",hint:"地下への動線・<b>狭い階段</b>（口コミ既出）が初来店客・幹事のハードルにならないか／間口・坪数の体感"},
+      {no:"③",t:"ターゲット",hint:"実客層（<b>年齢／人数／デートor宴会</b>）を観察。狙い(20代後半〜30代)とのズレ"},
+      {no:"④",t:"利用動機",hint:"来店客の会話・注文から<b>本当の動機</b>を拾う（表示動機と実動機のズレが宝）"},
+      {no:"⑤",t:"環境 ★メイン",hint:"ファサード／席タイプ・個室数／<b>大理石・ステンドグラス</b>が実際に視線を集めるか・映えるか"},
+      {no:"⑥",t:"消費形態",hint:"お通し額・注文構成・コースvsアラカルト比率・<b>客単価5,500円の会計納得感</b>"},
+      {no:"⑦",t:"サービス",hint:"接客がテンポを邪魔しないか／<b>提供ペースが速すぎ</b>ないか／自分が幹事なら任せられるか"},
+      {no:"⑧",t:"メニュー",hint:"看板商品の押し出し方・品質。<b>名物が客単価5,500円を正当化</b>できるか（黒毛和牛レアハンバーグ等）"},
+      {no:"⑨",t:"販促・コミュニケーション",hint:"店頭・卓上の<b>SNS誘導</b>／予約導線／事前期待（HPG・SNS）と現地体験の一致度"}
+    ];
+    var form = document.getElementById('form');
+    ITEMS.forEach(function(it,i){
+      var d = document.createElement('div'); d.className='item';
+      d.innerHTML =
+        '<div class="q"><span class="no">'+it.no+'</span><span class="qt">'+it.t+'</span></div>'+
+        '<div class="hint">▲ '+it.hint+'</div>'+
+        '<textarea data-axis="'+i+'" placeholder="現地で見たこと・気づき"></textarea>'+
+        '<label class="chk"><input type="checkbox" data-chk="'+i+'"> 確認した</label>';
+      form.appendChild(d);
+    });
+
+    var els = {
+      axis: Array.prototype.slice.call(document.querySelectorAll('[data-axis]')),
+      chk: Array.prototype.slice.call(document.querySelectorAll('[data-chk]')),
+      est: Array.prototype.slice.call(document.querySelectorAll('[data-est]')),
+      key: Array.prototype.slice.call(document.querySelectorAll('[data-key]'))
+    };
+
+    function load(){
+      var raw = localStorage.getItem(LSKEY);
+      if(!raw) return;
+      try{
+        var d = JSON.parse(raw);
+        els.axis.forEach(function(t,i){ if(d.axis&&d.axis[i]!=null) t.value=d.axis[i]; });
+        els.chk.forEach(function(c,i){ if(d.chk&&d.chk[i]) c.checked=true; });
+        els.est.forEach(function(t){ if(d.est&&d.est[t.dataset.est]!=null) t.value=d.est[t.dataset.est]; });
+        els.key.forEach(function(t){ if(d.key&&d.key[t.dataset.key]!=null) t.value=d.key[t.dataset.key]; });
+      }catch(e){}
+    }
+    function collect(){
+      var d={axis:{},chk:{},est:{},key:{}};
+      els.axis.forEach(function(t,i){ d.axis[i]=t.value; });
+      els.chk.forEach(function(c,i){ d.chk[i]=c.checked; });
+      els.est.forEach(function(t){ d.est[t.dataset.est]=t.value; });
+      els.key.forEach(function(t){ d.key[t.dataset.key]=t.value; });
+      return d;
+    }
+    var savedEl=document.getElementById('saved'), tmr;
+    function save(){
+      localStorage.setItem(LSKEY, JSON.stringify(collect()));
+      savedEl.classList.add('show'); clearTimeout(tmr);
+      tmr=setTimeout(function(){ savedEl.classList.remove('show'); },1200);
+      updateProg();
+    }
+    function updateProg(){
+      var n=els.chk.filter(function(c){return c.checked;}).length;
+      document.getElementById('pct').textContent=n;
+      document.getElementById('pfill').style.width=(n/els.chk.length*100)+'%';
+    }
+    function md(){
+      var d=collect();
+      var L=[];
+      L.push("# "+STORE+" 訪問メモ（2026/6/27）");
+      L.push("");
+      L.push("## コンセプトシート9軸（▲観点の答え合わせ）");
+      ITEMS.forEach(function(it,i){
+        var done = d.chk[i] ? "✓確認" : "未確認";
+        var txt = (d.axis[i]||"").trim() || "—";
+        L.push("- "+it.no+" "+it.t+" ["+done+"]: "+txt);
+      });
+      L.push("");
+      L.push("## 店舗推定");
+      L.push("- 月商(実測/補正): "+((d.est.month||"").trim()||"—"));
+      L.push("- 満席率: "+((d.est.seat||"").trim()||"—"));
+      L.push("- 回転数: "+((d.est.turn||"").trim()||"—"));
+      L.push("");
+      L.push("## 訪問印象・気になった点");
+      L.push((d.key.impression||"").trim()||"—");
+      L.push("");
+      L.push("## 訪問後サマリー（狙い vs 現実 ＝ 改善提案）");
+      L.push((d.key.proposal||"").trim()||"—");
+      return L.join("\n");
+    }
+    var toast=document.getElementById('toast');
+    function showToast(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(function(){toast.classList.remove('show');},1800); }
+
+    document.addEventListener('input', function(e){ if(e.target.closest('.wrap')) save(); });
+    document.addEventListener('change', function(e){
+      if(e.target.matches('[data-chk]')){ var l=e.target.closest('.chk'); if(l) l.classList.toggle('on',e.target.checked); save(); }
+    });
+    document.getElementById('copy').addEventListener('click', function(){
+      var text=md(); document.getElementById('preview').value=text;
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){showToast("コピーしました");},function(){showToast("下のプレビューから選択コピー");});
+      } else { var p=document.getElementById('preview'); p.focus(); p.select(); showToast("下のプレビューから選択コピー"); }
+    });
+    document.getElementById('dl').addEventListener('click', function(){
+      var blob=new Blob([md()],{type:"text/markdown"});
+      var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+      a.download="bistro-rita-訪問メモ.md"; a.click(); URL.revokeObjectURL(a.href); showToast("保存しました");
+    });
+    document.getElementById('clear').addEventListener('click', function(){
+      if(confirm("メモを全部消去します。よろしいですか？")){ localStorage.removeItem(LSKEY); location.reload(); }
+    });
+
+    load();
+    els.chk.forEach(function(c){ if(c.checked) c.closest('.chk').classList.add('on'); });
+    updateProg();
+  })();
+  </script>
+</body>
+</html>
