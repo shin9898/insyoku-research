@@ -12,13 +12,13 @@
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
     line-height: 1.7; -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 22px 96px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 56px 22px 96px; }
   header { border-bottom: 2px solid var(--accent); padding-bottom: 22px; margin-bottom: 26px; }
   .eyebrow { color: var(--accent); font-size: 13px; letter-spacing: .14em; font-weight: 700; margin: 0 0 8px; }
   h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: .01em; }
   .lead { color: var(--sub); margin: 0; font-size: 15px; }
 
-  .toolbar { display:flex; gap:12px; align-items:center; margin-bottom:22px; flex-wrap:wrap; }
+  .toolbar { display:flex; gap:12px; align-items:center; margin-bottom:26px; flex-wrap:wrap; }
   .search { flex:1; min-width:220px; position:relative; }
   .search input {
     width:100%; padding:11px 14px 11px 38px; font-size:15px; border:1px solid var(--line);
@@ -29,33 +29,40 @@
   .count { font-size:13px; color:var(--sub); white-space:nowrap; }
   .count b { color:var(--accent); font-size:16px; }
 
-  .stores { display:grid; gap:16px; }
+  /* 会社グループ */
+  .company { margin-bottom:34px; }
+  .company > .chead { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 0 4px; }
+  .company > .chead h2 { font-size:20px; margin:0; color:var(--accent); }
+  .company > .chead .cmeta { font-size:12px; color:var(--sub); }
+  .company > .cdesc { font-size:12.5px; color:var(--sub); margin:0 0 14px; }
+
+  .stores { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   .store {
-    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px;
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px;
     transition:border-color .15s, box-shadow .15s;
   }
   .store:hover { border-color:var(--accent); box-shadow:0 6px 20px rgba(20,40,60,.07); }
   .store .top { display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; }
-  .store h2 { margin:0; font-size:19px; }
-  .store .meta { color:var(--sub); font-size:12.5px; margin:5px 0 14px; }
-  .store .meta span { margin-right:14px; white-space:nowrap; }
-  .reports { display:flex; gap:10px; flex-wrap:wrap; }
+  .store h3 { margin:0; font-size:17px; }
+  .store .meta { color:var(--sub); font-size:12px; margin:5px 0 13px; }
+  .store .meta span { margin-right:12px; white-space:nowrap; }
+  .reports { display:flex; gap:9px; flex-wrap:wrap; }
   .reports a {
-    display:inline-flex; align-items:center; gap:7px; text-decoration:none;
-    background:var(--accent-tint); color:var(--accent); font-weight:700; font-size:13.5px;
-    padding:9px 15px; border-radius:9px; border:1px solid transparent; transition:background .15s, border-color .15s;
+    display:inline-flex; align-items:center; gap:6px; text-decoration:none;
+    background:var(--accent-tint); color:var(--accent); font-weight:700; font-size:13px;
+    padding:8px 13px; border-radius:9px; border:1px solid transparent; transition:background .15s, border-color .15s;
   }
   .reports a:hover { background:#dde7f1; border-color:var(--accent); }
   .reports a.muted { background:#f1f1ee; color:var(--sub); font-weight:600; }
-  .reports a .arr { font-size:12px; }
+  .reports a .arr { font-size:11px; }
   .badge { font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:99px; background:var(--accent); color:#fff; white-space:nowrap; }
-  .badge.up { background:#7a3bb5; }
+  .badge.up { background:#7a2e3b; }
 
   .empty { display:none; text-align:center; color:var(--sub); padding:48px 0; font-size:14px; }
 
   footer { margin-top:42px; color:var(--sub); font-size:12px; border-top:1px solid var(--line); padding-top:18px; }
   footer a { color:var(--accent); }
-  @media (max-width:560px){ .wrap{padding:40px 16px 72px;} h1{font-size:25px;} }
+  @media (max-width:620px){ .wrap{padding:40px 16px 72px;} h1{font-size:25px;} .stores{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -63,39 +70,55 @@
     <header>
       <p class="eyebrow">INSYOKU RESEARCH</p>
       <h1>飲食店 事前リサーチ集</h1>
-      <p class="lead">臨店前の事前準備ドキュメント（店舗ごとに 事前レポート ／ 口コミ分析）。</p>
+      <p class="lead">臨店前の事前準備ドキュメント。運営会社ごとに 事前レポート ／ 口コミ分析 をまとめています。</p>
     </header>
 
     <div class="toolbar">
-      <div class="search"><input id="q" type="search" placeholder="店名・エリアで絞り込み（例：渋谷、つむぎ堂）" aria-label="店舗を検索"></div>
-      <div class="count"><b id="n">2</b> 店舗</div>
+      <div class="search"><input id="q" type="search" placeholder="店名・会社・エリアで絞り込み（例：リタ、LINK STYLE、渋谷）" aria-label="検索"></div>
+      <div class="count"><b id="n">3</b> 店舗 / <b id="cn">1</b> 社</div>
     </div>
 
-    <div class="stores" id="stores">
+    <div id="list">
 
-      <article class="store" data-name="酒場 つむぎ堂 渋谷店 渋谷 大衆酒場 LINK STYLE つむぎどう">
-        <div class="top">
-          <h2>酒場 つむぎ堂 渋谷店</h2>
-          <span class="badge up">NEW</span>
+      <!-- 会社: 株式会社LINK STYLE -->
+      <section class="company" data-company="株式会社LINK STYLE LINK STYLE リンクスタイル 馬淵和也">
+        <div class="chead">
+          <h2>株式会社LINK STYLE</h2>
+          <span class="cmeta">代表 馬淵和也／設立2017／法人番号 5190001029288／新宿ドミナント展開</span>
         </div>
-        <div class="meta"><span>📍 渋谷・宇田川町</span><span>🍶 ワンランク上の大衆酒場</span><span>📅 2026.7.1 訪問</span></div>
-        <div class="reports">
-          <a href="tsumugido/report.html">事前レポート <span class="arr">→</span></a>
-          <a href="tsumugido/review.html">口コミ分析 <span class="arr">→</span></a>
-        </div>
-      </article>
+        <p class="cdesc">「20〜30代が気軽に＋口コミ増殖」の勝ち筋で多ブランド展開（つむぎ堂・ひまり堂・ビストロ リタ 等）。</p>
+        <div class="stores">
 
-      <article class="store" data-name="酒場 ひまり堂 恵比寿店 恵比寿 ネオ大衆酒場 ひまりどう">
-        <div class="top">
-          <h2>酒場 ひまり堂 恵比寿店</h2>
+          <article class="store" data-name="ビストロ リタ 新宿店 新宿 西新宿 イタリアンバル ビストロ bistro rita LINK STYLE リンクスタイル">
+            <div class="top"><h3>ビストロ リタ 新宿店</h3><span class="badge up">NEW</span></div>
+            <div class="meta"><span>📍 西新宿・地下</span><span>🍷 大衆ビストロ</span><span>📅 2025.2 開店</span></div>
+            <div class="reports">
+              <a href="link-style/bistro-rita/report.html">事前レポート <span class="arr">→</span></a>
+              <a href="link-style/bistro-rita/review.html">口コミ分析 <span class="arr">→</span></a>
+            </div>
+          </article>
+
+          <article class="store" data-name="酒場 つむぎ堂 渋谷店 渋谷 大衆酒場 つむぎどう tsumugido LINK STYLE リンクスタイル">
+            <div class="top"><h3>酒場 つむぎ堂 渋谷店</h3></div>
+            <div class="meta"><span>📍 渋谷・宇田川町</span><span>🍶 ワンランク上の大衆酒場</span><span>⭐ 食べログ 3.58</span></div>
+            <div class="reports">
+              <a href="link-style/tsumugido/report.html">事前レポート <span class="arr">→</span></a>
+              <a href="link-style/tsumugido/review.html">口コミ分析 <span class="arr">→</span></a>
+            </div>
+          </article>
+
+          <article class="store" data-name="酒場 ひまり堂 恵比寿店 恵比寿 ネオ大衆酒場 ひまりどう himaridou LINK STYLE リンクスタイル">
+            <div class="top"><h3>酒場 ひまり堂 恵比寿店</h3></div>
+            <div class="meta"><span>📍 恵比寿</span><span>🍶 ネオ大衆酒場</span><span>⭐ 食べログ 3.45</span></div>
+            <div class="reports">
+              <a href="link-style/himaridou/report.html">事前レポート <span class="arr">→</span></a>
+              <a href="link-style/himaridou/review.html">口コミ分析 <span class="arr">→</span></a>
+              <a class="muted" href="link-style/himaridou/report.md">report.md</a>
+            </div>
+          </article>
+
         </div>
-        <div class="meta"><span>📍 恵比寿</span><span>🍶 ネオ大衆酒場</span><span>⭐ 食べログ 3.45</span></div>
-        <div class="reports">
-          <a href="himaridou/report.html">事前レポート <span class="arr">→</span></a>
-          <a href="himaridou/review.html">口コミ分析 <span class="arr">→</span></a>
-          <a class="muted" href="himaridou/report.md">report.md</a>
-        </div>
-      </article>
+      </section>
 
     </div>
 
@@ -109,19 +132,28 @@
   <script>
     (function(){
       var q = document.getElementById('q');
-      var stores = Array.prototype.slice.call(document.querySelectorAll('.store'));
-      var n = document.getElementById('n');
+      var companies = Array.prototype.slice.call(document.querySelectorAll('.company'));
+      var n = document.getElementById('n'), cn = document.getElementById('cn');
       var empty = document.getElementById('empty');
       function apply(){
         var t = (q.value || '').trim().toLowerCase();
-        var shown = 0;
-        stores.forEach(function(s){
-          var hit = !t || s.getAttribute('data-name').toLowerCase().indexOf(t) !== -1;
-          s.style.display = hit ? '' : 'none';
-          if (hit) shown++;
+        var shownStores = 0, shownCos = 0;
+        companies.forEach(function(co){
+          var coHay = co.getAttribute('data-company').toLowerCase();
+          var coMatch = !t || coHay.indexOf(t) !== -1;
+          var stores = Array.prototype.slice.call(co.querySelectorAll('.store'));
+          var visibleInCo = 0;
+          stores.forEach(function(s){
+            var hit = !t || coMatch || s.getAttribute('data-name').toLowerCase().indexOf(t) !== -1;
+            s.style.display = hit ? '' : 'none';
+            if (hit) visibleInCo++;
+          });
+          co.style.display = visibleInCo ? '' : 'none';
+          if (visibleInCo){ shownCos++; shownStores += visibleInCo; }
         });
-        n.textContent = shown;
-        empty.style.display = shown ? 'none' : 'block';
+        n.textContent = shownStores;
+        cn.textContent = shownCos;
+        empty.style.display = shownStores ? 'none' : 'block';
       }
       q.addEventListener('input', apply);
     })();
