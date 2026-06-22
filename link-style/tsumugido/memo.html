@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>訪問メモ｜ビストロ リタ 新宿店</title>
+<title>訪問メモ｜酒場 つむぎ堂 渋谷店</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --key:#7a2e3b; --key2:#9c4456; --key-tint:#f5e9ec; --line:#e7e2dd;
+    --key:#1b3a5b; --key2:#2f6090; --key-tint:#eaf0f6; --line:#e6e3dc;
     --ink:#23202a; --sub:#6a626a; --paper:#faf7f5; --card:#fff;
     --good:#1f7a3d; --good-bg:#e7f3ea; --watch:#b5651d; --watch-bg:#fbf1e6;
   }
@@ -80,8 +80,8 @@
   <div class="wrap">
     <header class="h">
       <div class="eyebrow">訪問メモ ｜ コンセプトシート現地記入</div>
-      <h1>ビストロ リタ 新宿店</h1>
-      <div class="hsub">訪問予定 2026.6.27 ／ 各項目の <b style="color:var(--watch)">▲観点</b> を見ながらメモ。入力は自動保存。最後に「メモをコピー」で共有用テキストを出力。</div>
+      <h1>酒場 つむぎ堂 渋谷店</h1>
+      <div class="hsub">訪問予定 2026.7.1 ／ 各項目の <b style="color:var(--watch)">▲観点</b> を見ながらメモ。入力は自動保存。最後に「メモをコピー」で共有用テキストを出力。</div>
       <div class="prog">確認済み <span id="pct">0</span>/<span id="ptot">9</span> 観点<div class="pbar"><div class="pfill" id="pfill"></div></div></div>
       <details class="keep"><summary>保存について（消えてしまう条件）</summary>
         <div class="body">入力は<b>この端末・このブラウザにだけ</b>自動保存されます。次の場合に消えます:<br>
@@ -106,8 +106,8 @@
 
     <div class="grp">訪問後サマリー（狙い vs 現実 ＝ 改善提案）</div>
     <div class="item">
-      <div class="hint">CSの核心。<b>社長の狙い</b>（高級感ある隠れ家／客単価5,500円の価値／わかりやすい名物）に対し、<b>ターゲット(20-30代)の実際の反応</b>がズレている所を改善提案に。</div>
-      <textarea data-key="proposal" placeholder="例: 高級感の狙いに対し地下の階段が暗く初来店が不安→サイン追加。名物は満足だが○○が弱い 等"></textarea>
+      <div class="hint">CSの核心。<b>社長の狙い</b>（気軽さ＋ワンランク上の大衆酒場／名物で口コミ増殖）に対し、<b>ターゲット(20-30代の飲み会幹事)の実際の反応</b>がズレている所を改善提案に。</div>
+      <textarea data-key="proposal" placeholder="例: 酢飯の酢が強い／つくねが温い→提供オペ。あて巻きはご飯多め→少量版が欲しい 等"></textarea>
     </div>
 
     <div class="out">
@@ -126,18 +126,18 @@
 
   <script>
   (function(){
-    var STORE = "ビストロ リタ 新宿店";
-    var LSKEY = "insyoku-memo:link-style/bistro-rita";
+    var STORE = "酒場 つむぎ堂 渋谷店";
+    var LSKEY = "insyoku-memo:link-style/tsumugido";
     // 事前レポートの ▲当日 観点（9軸）
     var ITEMS = [
-      {no:"①",t:"業態コンセプト",hint:"“大衆の気軽さ”と“ワンランク上の高級感”が<b>地下空間で両立</b>して伝わるか"},
-      {no:"②",t:"立地・物件",hint:"地下への動線・<b>狭い階段</b>（口コミ既出）が初来店客・幹事のハードルにならないか／間口・坪数の体感"},
-      {no:"③",t:"ターゲット",hint:"実客層（<b>年齢／人数／デートor宴会</b>）を観察。狙い(20代後半〜30代)とのズレ"},
+      {no:"①",t:"業態コンセプト",hint:"入店時に<b>大衆の活気</b>と<b>ワンランク上の質感</b>が両立して伝わるか"},
+      {no:"②",t:"立地・物件",hint:"看板・導線で<b>初来店客が迷わず辿り着ける</b>か（迷う＝幹事の心理的コスト）／間口・坪数を実見"},
+      {no:"③",t:"ターゲット",hint:"実客層（<b>年齢／人数／男女比／グループor少人数</b>）を観察。狙いとのズレ"},
       {no:"④",t:"利用動機",hint:"来店客の会話・注文から<b>本当の動機</b>を拾う（表示動機と実動機のズレが宝）"},
-      {no:"⑤",t:"環境 ★メイン",hint:"ファサード／席タイプ・個室数／<b>大理石・ステンドグラス</b>が実際に視線を集めるか・映えるか"},
-      {no:"⑥",t:"消費形態",hint:"お通し額・注文構成・コースvsアラカルト比率・<b>客単価5,500円の会計納得感</b>"},
-      {no:"⑦",t:"サービス",hint:"接客がテンポを邪魔しないか／<b>提供ペースが速すぎ</b>ないか／自分が幹事なら任せられるか"},
-      {no:"⑧",t:"メニュー",hint:"看板商品の押し出し方・品質。<b>名物が客単価5,500円を正当化</b>できるか（黒毛和牛レアハンバーグ等）"},
+      {no:"⑤",t:"環境 ★メイン",hint:"ファサード／席タイプ・個室数／<b>オープンキッチン</b>が実際に客の視線を集めるか・映え要素"},
+      {no:"⑥",t:"消費形態",hint:"お通し額・実注文構成・コースvsアラカルト比率・<b>会計時の納得感</b>"},
+      {no:"⑦",t:"サービス",hint:"接客がテンポを邪魔しないか／放置されないか／<b>グループ客への配慮</b>／自分が幹事なら任せられるか"},
+      {no:"⑧",t:"メニュー",hint:"メニュー構成・価格・看板商品の押し出し方・品質（<b>名物が“教えたくなるレベル”か</b>）"},
       {no:"⑨",t:"販促・コミュニケーション",hint:"店頭・卓上の<b>SNS誘導</b>／予約導線／事前期待（HPG・SNS）と現地体験の一致度"}
     ];
     var form = document.getElementById('form');
@@ -192,7 +192,7 @@
     function md(){
       var d=collect();
       var L=[];
-      L.push("# "+STORE+" 訪問メモ（2026/6/27）");
+      L.push("# "+STORE+" 訪問メモ（2026/7/1）");
       L.push("");
       L.push("## コンセプトシート9軸（▲観点の答え合わせ）");
       ITEMS.forEach(function(it,i){
@@ -229,7 +229,7 @@
     document.getElementById('dl').addEventListener('click', function(){
       var blob=new Blob([md()],{type:"text/markdown"});
       var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-      a.download="bistro-rita-訪問メモ.md"; a.click(); URL.revokeObjectURL(a.href); showToast("保存しました");
+      a.download="tsumugido-訪問メモ.md"; a.click(); URL.revokeObjectURL(a.href); showToast("保存しました");
     });
     document.getElementById('clear').addEventListener('click', function(){
       if(confirm("メモを全部消去します。よろしいですか？")){ localStorage.removeItem(LSKEY); location.reload(); }
