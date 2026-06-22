@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事前レポート｜酒場 つむぎ堂 渋谷店</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --key:#1b3a5b;        /* キーカラー：藍 */
+    --key-tint:#eaf0f6;
+    --key-line:#cdd9e6;
+    --watch:#b5651d;      /* 機能色：当日検証（注意） */
+    --watch-tint:#fbf1e6;
+    --ink:#1f2630;
+    --sub:#5c6672;
+    --line:#e6e3dc;
+    --paper:#faf8f4;
+    --card:#ffffff;
+    --fact:#6b7280;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;font-family:"Noto Sans JP",sans-serif;color:var(--ink);
+    background:var(--paper);line-height:1.75;font-size:15px;
+    font-feature-settings:"palt";
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 80px;}
+
+  /* マストヘッド */
+  header.mast{
+    border-bottom:3px solid var(--key);padding:40px 0 22px;margin-bottom:8px;
+  }
+  .eyebrow{font-size:12px;letter-spacing:.18em;color:var(--key);font-weight:700;}
+  h1{
+    font-family:"Noto Serif JP",serif;font-weight:700;
+    font-size:34px;line-height:1.3;margin:6px 0 4px;color:var(--key);
+  }
+  .mast .lead{color:var(--sub);font-size:13.5px;margin-top:6px;}
+  .mast .meta-row{
+    display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:13px;color:var(--sub);
+  }
+  .mast .meta-row b{color:var(--ink);font-weight:700;}
+
+  /* 凡例 */
+  .legend{
+    display:flex;flex-wrap:wrap;gap:6px 16px;margin:18px 0 30px;
+    font-size:12px;color:var(--sub);padding:10px 14px;background:#fff;
+    border:1px solid var(--line);border-radius:8px;
+  }
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .dot.fact{background:var(--fact);}
+  .dot.infer{background:var(--key);}
+  .dot.watch{background:var(--watch);}
+
+  /* セクション見出し */
+  section{margin-top:38px;}
+  h2{
+    font-size:19px;font-weight:900;color:var(--key);margin:0 0 16px;
+    padding-left:12px;border-left:5px solid var(--key);line-height:1.4;
+  }
+  h2 .en{font-size:11px;font-weight:500;color:var(--sub);letter-spacing:.1em;display:block;margin-left:-12px;padding-left:12px;}
+
+  /* 結論ファースト：ストーリー仮説 */
+  .story{
+    background:var(--key);color:#fff;border-radius:12px;padding:26px 28px;
+  }
+  .story .tag{font-size:11px;letter-spacing:.14em;opacity:.8;font-weight:700;}
+  .story p{font-size:17px;line-height:1.85;margin:8px 0 0;font-weight:500;}
+  .story .hi{background:rgba(255,255,255,.18);padding:1px 6px;border-radius:4px;font-weight:700;}
+  .story .src{font-size:11.5px;opacity:.72;margin-top:14px;}
+
+  /* お店の雰囲気 ギャラリー */
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .gallery figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .gallery img{width:100%;height:220px;object-fit:cover;display:block;background:#eee;}
+  .gallery figure.wide{grid-column:1 / -1;}
+  .gallery figure.wide img{height:300px;}
+  .gallery figcaption{padding:12px 16px;}
+  .gallery figcaption b{display:block;font-size:14px;color:var(--ink);}
+  .gallery figcaption .c-sub{font-size:12px;color:var(--sub);margin-top:3px;line-height:1.6;}
+  .gallery figcaption .tagw{display:inline-block;font-size:10.5px;font-weight:700;color:var(--watch);
+    background:var(--watch-tint);padding:1px 7px;border-radius:99px;margin-top:7px;}
+  .gallery figcaption .tagk{display:inline-block;font-size:10.5px;font-weight:700;color:var(--key);
+    background:var(--key-tint);padding:1px 7px;border-radius:99px;margin-top:7px;}
+  /* 名物ストリップ */
+  .dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;}
+  .dishes figure{margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;}
+  .dishes img{width:100%;height:150px;object-fit:cover;display:block;background:#eee;}
+  .dishes figcaption{padding:10px 12px;font-size:12.5px;}
+  .dishes figcaption b{color:var(--ink);}
+  .dishes figcaption .price{color:var(--key);font-weight:700;font-family:"Noto Serif JP",serif;}
+
+  /* 基本情報 key-value */
+  .kv{
+    display:grid;grid-template-columns:120px 1fr;gap:0;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .kv dt{background:var(--key-tint);color:var(--key);font-weight:700;font-size:13px;
+    padding:11px 16px;border-bottom:1px solid var(--line);}
+  .kv dd{margin:0;padding:11px 16px;border-bottom:1px solid var(--line);font-size:14px;}
+  .kv dt:last-of-type,.kv dd:last-child{border-bottom:none;}
+
+  /* 3つの問い */
+  .ask{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .ask .q{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;}
+  .ask .n{font-family:"Noto Serif JP",serif;font-size:22px;color:var(--key);font-weight:700;}
+  .ask .t{font-size:13px;margin-top:4px;line-height:1.6;}
+  .ask .t small{color:var(--watch);font-weight:700;}
+
+  /* 9項目カード */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;}
+  .card h3{margin:0 0 12px;font-size:15px;font-weight:700;color:var(--ink);display:flex;align-items:baseline;gap:9px;}
+  .card h3 .no{font-family:"Noto Serif JP",serif;color:var(--key);font-size:18px;font-weight:700;}
+  .card ul{list-style:none;margin:0;padding:0;}
+  .card li{position:relative;padding:3px 0 3px 20px;font-size:13px;line-height:1.7;}
+  .card li::before{position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;content:"";}
+  .card li.fact::before{background:var(--fact);}
+  .card li.infer::before{background:var(--key);}
+  .card li.infer{color:#33414f;}
+  .card li.watch{background:var(--watch-tint);border-radius:6px;margin-top:6px;padding:7px 10px 7px 22px;font-size:12.5px;}
+  .card li.watch::before{background:var(--watch);left:8px;top:13px;}
+  .card li.watch b{color:var(--watch);}
+  .src-inline{color:var(--fact);font-size:11px;font-weight:700;}
+
+  /* 推定値 */
+  .est{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .est .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;text-align:center;}
+  .est .label{font-size:12px;color:var(--sub);}
+  .est .val{font-family:"Noto Serif JP",serif;font-size:24px;color:var(--key);font-weight:700;margin:4px 0;}
+  .est .note{font-size:11px;color:var(--fact);line-height:1.5;}
+  .est-foot{font-size:12px;color:var(--sub);margin-top:12px;background:var(--watch-tint);
+    border-left:4px solid var(--watch);padding:10px 14px;border-radius:0 8px 8px 0;}
+
+  /* 検証トップ3 / コツ */
+  .ol{counter-reset:n;list-style:none;padding:0;margin:0;}
+  .ol li{counter-increment:n;position:relative;padding:10px 0 10px 44px;border-bottom:1px dashed var(--line);font-size:14px;}
+  .ol li:last-child{border-bottom:none;}
+  .ol li::before{content:counter(n);position:absolute;left:0;top:9px;width:28px;height:28px;
+    background:var(--watch);color:#fff;border-radius:50%;text-align:center;line-height:28px;
+    font-weight:700;font-family:"Noto Serif JP",serif;font-size:14px;}
+  .tips{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;}
+  .tips>p{margin:0 0 12px;font-weight:700;color:var(--key);}
+  .tips .ex{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px;line-height:1.65;}
+  .tips .ex .arrow{color:var(--watch);font-weight:700;white-space:nowrap;}
+
+  /* 出典フッター */
+  footer{margin-top:48px;border-top:1px solid var(--line);padding-top:20px;font-size:12px;color:var(--sub);}
+  footer h4{font-size:12px;letter-spacing:.1em;color:var(--key);margin:0 0 10px;}
+  footer .src-item{padding:5px 0;line-height:1.6;}
+  footer .src-item code{background:var(--key-tint);color:var(--key);font-weight:700;
+    padding:1px 6px;border-radius:4px;font-family:inherit;font-size:11px;margin-right:6px;}
+  footer a{color:var(--key);word-break:break-all;}
+  footer .disc{margin-top:14px;font-size:11.5px;color:var(--fact);}
+
+  @media (max-width:680px){
+    h1{font-size:26px;}
+    .ask,.cards,.est{grid-template-columns:1fr;}
+    .kv{grid-template-columns:96px 1fr;}
+  }
+  @media print{
+    body{background:#fff;}
+    .card,.kv,.tips,.est .box,.ask .q{break-inside:avoid;}
+    .story{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="eyebrow">事前リサーチ ｜ コンセプトシート下書き</div>
+    <h1>酒場 つむぎ堂 渋谷店</h1>
+    <div class="lead">「狙い（サービスストーリー）× ターゲット顧客の現実」のズレを当日見つけるための事前レポート</div>
+    <div class="meta-row">
+      <span>訪問日 <b>2026.7.1</b></span>
+      <span>運営 <b>株式会社LINK STYLE</b>（代表 馬淵和也）</span>
+      <span>業態 <b>ワンランク上の大衆酒場</b></span>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span><i class="dot fact"></i>事実（出典あり）</span>
+    <span><i class="dot infer"></i>仮説［推］＝当日の検証対象</span>
+    <span><i class="dot watch"></i>▲ 当日ここを見る</span>
+  </div>
+
+  <!-- 結論ファースト：サービスストーリー仮説 -->
+  <section>
+    <div class="story">
+      <div class="tag">サービスストーリー仮説（軸）</div>
+      <p>「20〜30代が<span class="hi">“ちょっと良い店”で気軽に飲み、思わず誰かに教えたくなる体験</span>」を、①話題性ある渋谷立地 ②原価率を惜しまない名物（茹でタンは原価率50%超）③オープンキッチンのライブ感 ④口コミ最優先の運営、で一気通貫に設計。狙いは「広告で集客」ではなく<span class="hi">体験の質で口コミを増殖させる</span>勝ち筋。</p>
+      <div class="src">※ 各打ち手は [GN] が根拠。これを1本のストーリーに束ねたのは Claude の解釈［推］であり、社長が明言しているのは個々の打ち手。</div>
+    </div>
+  </section>
+
+  <!-- 基本情報 -->
+  <section>
+    <h2>店舗基本情報<span class="en">BASIC INFO</span></h2>
+    <dl class="kv">
+      <dt>屋号</dt><dd>酒場 つむぎ堂 渋谷店</dd>
+      <dt>運営</dt><dd>株式会社LINK STYLE（代表 馬淵和也／多ブランド展開：つむぎ堂・サワマル・ビストロ リタ 等）</dd>
+      <dt>住所</dt><dd>渋谷区宇田川町37-10 麻仁ビル渋谷 1F</dd>
+      <dt>アクセス</dt><dd>渋谷駅 徒歩5〜6分（センター街／公園通りエリア・1F路面）</dd>
+      <dt>席数</dt><dd>84〜90席（完全個室あり・最大16名／貸切50〜90名）</dd>
+      <dt>営業</dt><dd>月〜金 17:00–23:00／土日祝 12:00–23:00（料理L.O. 22:00）</dd>
+    </dl>
+  </section>
+
+  <!-- お店の雰囲気 -->
+  <section>
+    <h2>お店の雰囲気<span class="en">ATMOSPHERE — 出典: HotPepper [HPG]</span></h2>
+    <div class="gallery">
+      <figure class="wide">
+        <img src="img/atmosphere.jpg" alt="和モダンな大人の酒場の内観・完全個室">
+        <figcaption>
+          <b>和モダンな大人の酒場・完全個室</b>
+          <div class="c-sub">温かみのある照明と作り込まれた内装。「ワンランク上の質感」が空間に表れているか＝当日の確認軸。</div>
+          <span class="tagk">⑤環境 / ①コンセプト</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="img/openkitchen.jpg" alt="オープンキッチンに面したカウンター席">
+        <figcaption>
+          <b>オープンキッチン × カウンター</b>
+          <div class="c-sub">業態の見せ場＝ライブ感。口コミネタ・映え要素になり得る最重要ポイント。</div>
+          <span class="tagw">▲ メイン観察：客の視線を集めているか</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="img/private.jpg" alt="完全個室（2〜16名）">
+        <figcaption>
+          <b>完全個室（2〜16名）</b>
+          <div class="c-sub">グループ予約を取りに行く設計。幹事が「任せられる」と感じるか。</div>
+          <span class="tagk">③ターゲット</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="img/table.jpg" alt="広々としたテーブル席">
+        <figcaption>
+          <b>広々テーブル席（最大80名）／貸切50〜90名</b>
+          <div class="c-sub">大箱の回転・満席率を当日実測する対象。</div>
+          <span class="tagw">▲ 満席率・回転を実測</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--key);margin:26px 0 4px;">三大名物 ＝ 誰もが頼む3品</h3>
+    <p style="font-size:12px;color:var(--sub);margin:0 0 10px;">公式Instagram [@sakaba_tsumugido] でも「これ頼まない人はいないっしょ」と最も強く押し出している看板。茹でタンは原価率50%超 [GN]。</p>
+    <div class="dishes">
+      <figure>
+        <img src="img/tan.jpg" alt="超ホロホロの茹でタン">
+        <figcaption><b>① 超ホロホロの茹でタン</b> <span class="price">638円</span><br><span style="color:var(--sub);font-size:11.5px;">2日以上煮込みトロトロ [TG]</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/chicken.jpg" alt="国産鶏の肉汁焼き">
+        <figcaption><b>② 国産鶏の肉汁焼き</b> <span class="price">1,408円</span><br><span style="color:var(--sub);font-size:11.5px;">焼き20分超・卓上カット [HPG][TG]</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/gyoza.jpg" alt="呑める餃子">
+        <figcaption><b>③ 呑める餃子（6個）</b> <span class="price">528円</span><br><span style="color:var(--sub);font-size:11.5px;">薄皮ジューシー [TG]</span></figcaption>
+      </figure>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--key);margin:26px 0 10px;">おすすめマーク付きの推し料理 <span style="font-weight:400;font-size:12px;color:var(--sub);">［HPG メニュー上で強調］</span></h3>
+    <div class="dishes" style="grid-template-columns:repeat(4,1fr);">
+      <figure>
+        <img src="img/ichijiku.jpg" alt="いちじくバター">
+        <figcaption><b>いちじくバター（4個）</b> <span class="price">539円</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/yodaredori.jpg" alt="よだれ鶏">
+        <figcaption><b>よだれ鶏</b> <span class="price">649円</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/chickennanban.jpg" alt="自家製タルタルのチキン南蛮">
+        <figcaption><b>チキン南蛮（5個）</b> <span class="price">759円</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/samekimchi.jpg" alt="鮭キムチ">
+        <figcaption><b>鮭キムチ</b> <span class="price">649円</span></figcaption>
+      </figure>
+    </div>
+    <p style="font-size:12px;color:var(--sub);margin-top:10px;">他に「ネギ味噌きゅうり」「薩摩極み鶏 鳥刺し」「山芋の竜田揚げ」「つむぎ堂のポテサラ」やシメの<b>イクラのわっぱ飯</b>（食べ切れなければおにぎりに）も人気 [WS][TG]。<br>▲当日は「名物が“教えたくなるレベル”か」「おすすめ品がメニュー上で埋もれていないか（注文入口の強さ）」を確認。</p>
+  </section>
+
+  <!-- 3つの問い -->
+  <section>
+    <h2>記入前に頭に入れる3つの問い<span class="en">3 QUESTIONS</span></h2>
+    <div class="ask">
+      <div class="q"><div class="n">1</div><div class="t">社長の狙いは何か？<br>（サービスストーリー）</div></div>
+      <div class="q"><div class="n">2</div><div class="t">ターゲット顧客（20〜30代の飲み会幹事層）のニーズを満たせているか？ <small>※自分視点NG</small></div></div>
+      <div class="q"><div class="n">3</div><div class="t">改善点はないか？<br>（狙いと現実／顧客ニーズと打ち手のズレ）</div></div>
+    </div>
+  </section>
+
+  <!-- コンセプトシート9項目 -->
+  <section>
+    <h2>コンセプトシート 9項目<span class="en">CONCEPT SHEET</span></h2>
+    <div class="cards">
+
+      <div class="card">
+        <h3><span class="no">①</span>業態コンセプト</h3>
+        <ul>
+          <li class="fact">「ワンランク上の大衆酒場」「ライブ感あるオープンキッチン」「日常の飲み会想定」 <span class="src-inline">[GN]</span></li>
+          <li class="fact">多ブランド企業のフラッグシップ業態 <span class="src-inline">[WS]</span></li>
+          <li class="infer">安売り競争を避け質で口コミ資産を積む狙い</li>
+          <li class="watch"><b>▲当日</b> 入店時に“大衆の活気”と“ワンランク上の質感”が両立して伝わるか</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">②</span>立地・物件</h3>
+        <ul>
+          <li class="fact">渋谷駅徒歩5〜6分・宇田川町／センター街・1F路面 <span class="src-inline">[HPG][TG]</span></li>
+          <li class="fact">本店は「家賃が比較的安く話題の街」を選定／自由が丘等は意図的に回避 <span class="src-inline">[GN]</span></li>
+          <li class="infer">渋谷も「目的来店＋回遊客の両取り」狙い（渋谷店の出店理由の一次ソースは未確認）</li>
+          <li class="infer">想定家賃 150〜250万円/月（相場からの概算・出典なし）</li>
+          <li class="watch"><b>▲当日</b> 看板・導線で初来店客が迷わず辿り着けるか（迷う＝幹事の心理的コスト）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">③</span>ターゲット</h3>
+        <ul>
+          <li class="fact">20〜30代カジュアル層・会社帰りの飲み会中心 <span class="src-inline">[GN]</span></li>
+          <li class="fact">完全個室・最大16名・貸切50〜90名 <span class="src-inline">[HPG]</span></li>
+          <li class="infer">個室を持つ＝グループ予約を取りに行く設計</li>
+          <li class="watch"><b>▲当日</b> 実際の客層（年齢／人数／男女比／グループor少人数）を観察。狙いとのズレがストーリーの綻び</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">④</span>利用動機（インサイト）</h3>
+        <ul>
+          <li class="fact">「思わず誰かに教えたくなる店づくり」「口コミ増加を最優先」 <span class="src-inline">[GN]</span></li>
+          <li class="fact">名物目当て（茹でタン等） <span class="src-inline">[HPG][WS]</span></li>
+          <li class="infer">土日昼の「デイ飲み／休日ランチ飲み」（土日祝12:00開店からの推測）</li>
+          <li class="watch"><b>▲当日</b> 来店客の会話・注文から“本当の動機”を拾う（表示動機と実動機のズレが宝）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">⑤</span>環境 <span class="src-inline">★メイン観察</span></h3>
+        <ul>
+          <li class="fact">オープンキッチンが特徴・「ライブ感を重視した空間」 <span class="src-inline">[GN]</span></li>
+          <li class="fact">和モダンな大人の酒場・84〜90席・完全個室 <span class="src-inline">[HPG][TG]</span></li>
+          <li class="infer">見せ場＝口コミネタ／映え要素</li>
+          <li class="watch"><b>▲当日</b> ファサード写真／席タイプ・個室数／オープンキッチンが実際に客の視線を集めているか／映え要素の有無</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">⑥</span>消費形態</h3>
+        <ul>
+          <li class="fact">客単価：本店4,000円／渋谷アラカルト2,001〜3,000円・コース約3,500〜4,000円・2H飲み放題付4,000円〜（約70種） <span class="src-inline">[GN][HPG][WS]</span></li>
+          <li class="fact">名物の茹でタンは原価率50%超 <span class="src-inline">[GN]</span></li>
+          <li class="infer">評価軸「会計時の納得感を顧客視点で見る」（分析フレーム）</li>
+          <li class="watch"><b>▲当日</b> お通し額・実注文構成・コースvsアラカルト比率・会計時の納得感</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">⑦</span>サービス</h3>
+        <ul>
+          <li class="fact">BGM・スピーカー音質・食器まで作り込み／「料理品質×雰囲気×接客」を統合／「良い口コミを増やす」が基本方針 <span class="src-inline">[GN]</span></li>
+          <li class="infer">人員体制・提供スピード・サービス形態は当日確認（現時点でソースなし）</li>
+          <li class="watch"><b>▲当日</b> 接客がテンポを邪魔しないか／放置されないか／グループ客への配慮／自分が幹事なら任せられるか</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">⑧</span>メニュー</h3>
+        <ul>
+          <li class="fact">三大名物＝超ホロホロの茹でタン（約600〜640円）／国産鶏の肉汁焼き（約1,400円）／呑める餃子（約530円） <span class="src-inline">[HPG][WS]</span></li>
+          <li class="fact">名物の茹でタンは原価率50%超・手作り高品質 <span class="src-inline">[GN]</span></li>
+          <li class="infer">名物で注文の入口を固定し口コミワードを統一する狙い</li>
+          <li class="watch"><b>▲当日</b> メニュー構成・価格・看板商品の押し出し方・品質（名物が“教えたくなるレベル”か）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="no">⑨</span>販促・コミュニケーション</h3>
+        <ul>
+          <li class="fact">インフルエンサー来店による自然拡散／SNS時代の口コミ最優先 <span class="src-inline">[GN]</span></li>
+          <li class="fact">公式Instagram [@sakaba_tsumugido]（フォロワー約2.2万）で名物を「誰もが頼む3つ」と訴求／HPG・ヒトサラ等の媒体掲載・ネット予約／代表 馬淵氏のX発信 <span class="src-inline">[IG][WS]</span></li>
+          <li class="infer">広告依存せず体験で拡散</li>
+          <li class="watch"><b>▲当日</b> 店頭・卓上のSNS誘導／予約導線／事前期待（HPG・SNS）と現地体験の一致度</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 店舗推定 -->
+  <section>
+    <h2>店舗推定（3枚目）の事前たたき台<span class="en">ESTIMATES</span></h2>
+    <div class="est">
+      <div class="box">
+        <div class="label">月商（推定）</div>
+        <div class="val">1,300〜1,600<span style="font-size:13px">万円</span></div>
+        <div class="note">本店：月商最高1,500万・坪月商57万・客単価4,000円 [GN] を渋谷に当てはめた仮置き［推］</div>
+      </div>
+      <div class="box">
+        <div class="label">回転数（推定・夜）</div>
+        <div class="val">1.5〜2.0<span style="font-size:13px">回転</span></div>
+        <div class="note">84席×1.7×3,800円×26〜30日 ≒ 1,250〜1,440万/月（月商と整合）［推］</div>
+      </div>
+      <div class="box">
+        <div class="label">満席率（推定）</div>
+        <div class="val">当日実測</div>
+        <div class="note">平日夜ピーク／土日昼を実測して上書き</div>
+      </div>
+    </div>
+    <div class="est-foot">▲ 訪問印象・気になった点は当日記入（＝サービスストーリーの一貫性が崩れている点＝改善提案を書く）</div>
+  </section>
+
+  <!-- 検証トップ3 -->
+  <section>
+    <h2>当日まず疑うべき「私の［推］」トップ3<span class="en">VERIFY FIRST — 外すと提案がズレる</span></h2>
+    <ol class="ol">
+      <li><b>想定家賃</b>（完全に相場推定）→ 間口・坪数を見て補正</li>
+      <li><b>渋谷店の月商・回転</b>（本店数値の流用）→ 満席率・回転の実測で上書き</li>
+      <li><b>土日昼デイ飲み動機</b>（営業時間からの推測）→ 実際の昼客層を観察</li>
+    </ol>
+    <p style="font-size:12.5px;color:var(--sub);margin-top:12px;">事実ベースの [HPG][GN][TG][WS] は信頼してOK。［推］は当日の検証で潰す。</p>
+  </section>
+
+  <!-- 改善点を見つけるコツ -->
+  <section>
+    <h2>当日の改善点（提案ネタ）を見つけるコツ<span class="en">HOW TO SPOT GAPS</span></h2>
+    <div class="tips">
+      <p>「社長の狙い（①〜⑨の仮説）」と「ターゲット顧客の実際の反応」がズレている箇所を探す。</p>
+      <div class="ex"><span class="arrow">教えたくなる体験 →</span><span>なのに SNS誘導が卓上にない → 拡散の取りこぼし</span></div>
+      <div class="ex"><span class="arrow">気軽に →</span><span>なのに入店導線が分かりにくい → 幹事のハードル</span></div>
+      <div class="ex"><span class="arrow">名物推し →</span><span>なのにメニュー上で名物が埋もれている → 注文入口の弱さ</span></div>
+      <p style="margin:14px 0 0;font-weight:500;color:var(--ink);font-size:13.5px;">この「狙い vs 顧客現実」のギャップが、そのまま改善提案になる。</p>
+    </div>
+  </section>
+
+  <!-- 出典 -->
+  <footer>
+    <h4>※ 出典</h4>
+    <div class="src-item"><code>HPG</code>ホットペッパー つむぎ堂渋谷店 — <a href="https://www.hotpepper.jp/strJ004444155/">hotpepper.jp/strJ004444155</a>（住所・席数・営業時間・客単価・看板メニュー価格）</div>
+    <div class="src-item"><code>GN</code>ぐるなび通信 馬淵和也氏インタビュー — <a href="https://pro.gnavi.co.jp/magazine/t_res/cat_2/a_4292/">pro.gnavi.co.jp/magazine/…/a_4292</a>（コンセプト・ターゲット・客単価・月商・立地戦略・原価率・販促思想）</div>
+    <div class="src-item"><code>TG</code>「つむぎ堂」がとうとう渋谷に上陸 — <a href="https://tokyogourmet3.com/tsumugido/">tokyogourmet3.com/tsumugido</a>（渋谷店の席数・混雑状況）</div>
+    <div class="src-item"><code>IG</code>公式Instagram @sakaba_tsumugido — <a href="https://www.instagram.com/sakaba_tsumugido/">instagram.com/sakaba_tsumugido</a>（フォロワー約2.2万・名物の推し方／新宿・渋谷・池袋の3店発信）</div>
+    <div class="src-item"><code>WS</code>WebSearch要約 — グルメキャリー求人／X 馬淵和也氏／PR TIMES・東京新聞／Retty（多ブランド展開・池袋渋谷展開・オーナー発信・推しメニュー）</div>
+    <div class="disc">［推］ ＝ Claude の推論。出典から導いた仮説であり事実ではない＝当日の検証対象。｜ このレポートは koki の臨店前 事前準備ドキュメント（自分用）。</div>
+  </footer>
+
+</div>
+</body>
+</html>
