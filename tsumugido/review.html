@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>口コミ分析｜酒場 つむぎ堂 渋谷店</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --key:#1b3a5b; --key2:#2f6090; --key-tint:#eaf0f6; --line:#e6e3dc;
+    --ink:#1f2630; --sub:#5c6672; --paper:#faf8f4; --card:#fff;
+    --good:#1f7a3d; --good-bg:#e7f3ea; --warn:#b5651d; --warn-bg:#fbf1e6;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-feature-settings:"palt";
+    font-family:"Noto Sans JP",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1020px;margin:0 auto;padding:20px 16px calc(56px + env(safe-area-inset-bottom));}
+  header.hero{color:#fff;border-radius:18px;padding:28px 26px 22px;background:linear-gradient(135deg,#13283d,#2f6090);
+    box-shadow:0 12px 30px rgba(20,40,60,.2);}
+  .eyebrow{font-size:12px;letter-spacing:.16em;color:#bcd6ef;font-weight:700;}
+  h1{font-family:"Noto Serif JP",serif;margin:7px 0 6px;font-size:clamp(22px,5.6vw,30px);}
+  .hsub{color:#dbe7f3;font-size:clamp(12.5px,3.3vw,14px);}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 6px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;}
+  .stat .k{font-size:11.5px;color:var(--sub);font-weight:600;}
+  .stat .v{font-size:clamp(17px,4.6vw,23px);font-weight:800;margin-top:3px;color:var(--key);font-family:"Noto Serif JP",serif;}
+  .stat .v small{font-size:12px;color:var(--ink);font-weight:600;}
+  section{margin-top:26px;}
+  h2{font-size:clamp(16px,4.4vw,19px);margin:0 0 5px;padding-left:12px;border-left:5px solid var(--key);color:var(--key);}
+  .lead{font-size:13px;color:var(--sub);margin:0 0 14px;padding-left:12px;}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  .bars{display:flex;flex-direction:column;gap:11px;}
+  .bar{display:grid;grid-template-columns:140px 1fr;gap:10px;align-items:center;}
+  .bar .lab{font-size:13px;font-weight:600;text-align:right;color:#3a3f45;}
+  .bar .track{background:#eef1f5;border-radius:8px;height:24px;position:relative;overflow:hidden;}
+  .bar .fill{height:100%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;
+    padding-right:9px;color:#fff;font-size:11.5px;font-weight:700;white-space:nowrap;min-width:38px;}
+  .c1{background:linear-gradient(90deg,#2f6090,#1b3a5b);}
+  .c2{background:linear-gradient(90deg,#5a86b0,#3a6695);}
+  .c3{background:linear-gradient(90deg,#9bb4cc,#7795b5);}
+  .barnote{font-size:11.5px;color:var(--sub);margin-top:10px;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .col{border-radius:14px;padding:15px 16px;border:1px solid var(--line);}
+  .col.good{background:var(--good-bg);border-color:#cfe7d8;}
+  .col.warn{background:var(--warn-bg);border-color:#f0dcc7;}
+  .col h3{margin:0 0 9px;font-size:14.5px;}
+  .col.good h3{color:var(--good);} .col.warn h3{color:var(--warn);}
+  .col ul{margin:0;padding-left:18px;} .col li{margin:7px 0;font-size:13px;}
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;}
+  .quote{background:#fff;border:1px solid var(--line);border-left:4px solid var(--key);
+    border-radius:0 12px 12px 0;padding:13px 15px;box-shadow:0 2px 6px rgba(20,40,60,.04);}
+  .quote .tag{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--key);
+    border-radius:6px;padding:1px 8px;margin-bottom:7px;}
+  .quote .tag.g{background:var(--good);} .quote .tag.w{background:var(--warn);}
+  .quote .ttl{font-size:13px;font-weight:700;margin-bottom:4px;}
+  .quote p{margin:0;font-size:12.5px;color:#42474d;}
+  .quote .by{display:block;margin-top:7px;font-size:11px;color:var(--sub);}
+  .quote .by b{color:var(--key);}
+  .insight{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 4px;}
+  .insight .row{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid #f0ece4;}
+  .insight .row:last-child{border-bottom:none;}
+  .insight .ic{flex:none;width:30px;height:30px;border-radius:9px;background:var(--key);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;}
+  .insight .tx{font-size:13.5px;} .insight .tx b{color:var(--key);}
+  .platf{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .platf .p{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;}
+  .platf .p .name{font-size:12px;color:var(--sub);}
+  .platf .p .sc{font-family:"Noto Serif JP",serif;font-size:26px;font-weight:700;color:var(--key);margin:2px 0;}
+  .platf .p .ct{font-size:11px;color:var(--sub);}
+  footer{margin-top:30px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--sub);}
+  footer a{color:var(--key2);}
+  @media(max-width:760px){
+    .stats,.platf{grid-template-columns:repeat(2,1fr);}
+    .duo,.quotes{grid-template-columns:1fr;}
+    .bar{grid-template-columns:104px 1fr;gap:8px;}
+    .bar .lab{font-size:12px;}
+    .wrap{padding:14px 12px 48px;}
+  }
+</style></head><body><a href="../index.html" class="__backlink" style="position:fixed;top:12px;left:12px;z-index:9999;background:#fff;border:1px solid #cdd9e6;border-radius:99px;padding:7px 15px;font:600 13px/1 -apple-system,BlinkMacSystemFont,Noto Sans JP,sans-serif;color:#1b3a5b;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.12)">&#8592; リサーチ集</a><div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">口コミ分析レポート ｜ 事前リサーチ補助</div>
+    <h1>酒場 つむぎ堂 渋谷店</h1>
+    <div class="hsub">食べログ 総合3.58点・414件／取得できた口コミ <b>22件</b>を定性分析（点数付サンプル）。2026.7.1 訪問の事前材料。</div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="k">食べログ総合</div><div class="v">3.58<small> 点</small></div></div>
+    <div class="stat"><div class="k">口コミ件数</div><div class="v">414<small> 件</small></div></div>
+    <div class="stat"><div class="k">解析サンプル</div><div class="v">22<small> 件</small></div></div>
+    <div class="stat"><div class="k">最多言及</div><div class="v" style="font-size:16px">呑める餃子<small> 36%</small></div></div>
+  </div>
+
+  <section>
+    <h2>プラットフォーム別スコア</h2>
+    <p class="lead">媒体で評価が分かれる。<b>Yahoo・HotPepper系は高め、食べログは加重で辛め</b>に出るのが定石。</p>
+    <div class="platf">
+      <div class="p"><div class="name">食べログ</div><div class="sc">3.58</div><div class="ct">414件・夜¥3,000〜3,999</div></div>
+      <div class="p"><div class="name">Yahoo!マップ</div><div class="sc">3.96</div><div class="ct">クチコミ評価</div></div>
+      <div class="p"><div class="name">サンプル素点平均</div><div class="sc">≈4.0</div><div class="ct">取得22件の投稿者平均</div></div>
+    </div>
+    <div class="barnote">※食べログ店頭の3.58点は加重アルゴリズム（投稿者の信頼度・新しさ等）の合成値で、投稿者の素点平均（≈4.0）とは別物。サンプルは閲覧上位に偏るため高めに出る点に注意。</div>
+  </section>
+
+  <section>
+    <h2>メニュー言及ランキング（サンプル22件）</h2>
+    <p class="lead">口コミで名前が挙がった料理。<b>「呑める餃子」が筆頭（36%）</b>＝名物で口コミワードを固める狙いが効いている。茹でタン・鶏が続く。</p>
+    <div class="panel"><div class="bars">
+      <div class="bar"><div class="lab">呑める餃子</div><div class="track"><div class="fill c1" style="width:100%">8件 / 36%</div></div></div>
+      <div class="bar"><div class="lab">茹でタン・牛タン</div><div class="track"><div class="fill c1" style="width:75%">6件 / 27%</div></div></div>
+      <div class="bar"><div class="lab">国産鶏の肉汁焼き・鶏</div><div class="track"><div class="fill c2" style="width:50%">4件 / 18%</div></div></div>
+      <div class="bar"><div class="lab">ポテサラ・ポテト</div><div class="track"><div class="fill c2" style="width:38%">3件 / 14%</div></div></div>
+      <div class="bar"><div class="lab">わっぱ飯（シメ）</div><div class="track"><div class="fill c3" style="width:25%">2件 / 9%</div></div></div>
+      <div class="bar"><div class="lab">デザート・甘味</div><div class="track"><div class="fill c3" style="width:25%">2件 / 9%</div></div></div>
+    </div><div class="barnote">※取得22件の言及ベース。1件で複数料理に言及あり。サンプルが小さいため相対傾向として参照。</div></div>
+  </section>
+
+  <section>
+    <h2>口コミで語られるトピック（サンプル22件）</h2>
+    <p class="lead">何が話題になりやすいか。<b>「予約・混雑」が最多＝人気の裏返し</b>。和モダンの雰囲気・コスパが続く。</p>
+    <div class="panel"><div class="bars">
+      <div class="bar"><div class="lab">料理・味</div><div class="track"><div class="fill c1" style="width:100%">20件 / 91%</div></div></div>
+      <div class="bar"><div class="lab">予約・混雑・人気</div><div class="track"><div class="fill c1" style="width:45%">9件 / 41%</div></div></div>
+      <div class="bar"><div class="lab">雰囲気・和モダン・隠れ家</div><div class="track"><div class="fill c1" style="width:40%">8件 / 36%</div></div></div>
+      <div class="bar"><div class="lab">コスパ・価格</div><div class="track"><div class="fill c2" style="width:30%">6件 / 27%</div></div></div>
+      <div class="bar"><div class="lab">接客・サービス</div><div class="track"><div class="fill c2" style="width:30%">6件 / 27%</div></div></div>
+      <div class="bar"><div class="lab">喫煙・喧騒（不満系）</div><div class="track"><div class="fill c3" style="width:20%">4件 / 18%</div></div></div>
+    </div><div class="barnote">※キーワード言及ベース。1件が複数トピックに該当するため合計は100%を超える。</div></div>
+  </section>
+
+  <section>
+    <h2>総評：良い点 / 気になる点</h2>
+    <p class="lead">総じて<b>高評価</b>。名物・コスパ・和モダン空間が三本柱。不満は喫煙・喧騒・サービスのムラに集約。</p>
+    <div class="duo">
+      <div class="col good"><h3>◎ よく褒められる点</h3><ul>
+        <li><b>三大名物の満足度</b>（「名物3つすべて美味しい」「家では再現できない味」）。特に<b>呑める餃子</b>＝肉汁・ニンニクが効くと高評価</li>
+        <li><b>コスパの良さ</b>（「考えられないレベル」「飲み放題付4,000円台コースがお得」）</li>
+        <li><b>和モダン・隠れ家のオシャレ空間</b>（「渋谷で落ち着く」「大人の隠れ家」）</li>
+        <li><b>活気と丁寧な接客</b>（「笑顔で丁寧」「スタッフが親切」）</li>
+        <li><b>新宿人気店の渋谷上陸という話題性</b>（口コミの入口になっている）</li></ul></div>
+      <div class="col warn"><h3>△ 気になる点・不満トーン</h3><ul>
+        <li><b>全席喫煙可</b>（「タバコが苦手な人は要認識」）＝明確なネガ要素</li>
+        <li><b>常に満席・予約必須／2時間制</b>の時間制限</li>
+        <li><b>混雑時の喧騒</b>（「会話が聞き取りづらい」「ゆっくり話すにはやや厳しい」）</li>
+        <li><b>サービス評価のムラ</b>（サービス3.0を付ける投稿が複数）</li>
+        <li><b>餃子が「普通でした」</b>の声も＝推しと体験のギャップが出る場合あり</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>区分別 代表口コミ</h2>
+    <p class="lead">実際の口コミ抜粋（食べログ・投稿者ハンドル/点数付き）。各区分の"生の声"。</p>
+    <div class="quotes">
+      <div class="quote"><span class="tag g">名物</span><div class="ttl">名物3つすべて美味しかった</div><p>渋谷にありながら落ち着いた雰囲気でオシャレ。茹でタン・国産鶏の肉汁焼き・呑める餃子の名物3つすべて美味しかった。</p><span class="by">by <b>belleaf</b>（4.5点）</span></div>
+      <div class="quote"><span class="tag g">コスパ</span><div class="ttl">考えられない！レベルのコスパよすぎ美味しすぎ</div><p>飲み放題つきで4,000円台のコース。料理のクオリティを考えると渋谷でこの価格はあり得ない。</p><span class="by">by <b>げんもん / 055d</b>（4.0〜4.2点）</span></div>
+      <div class="quote"><span class="tag">雰囲気</span><div class="ttl">大人のための隠れ家酒場</div><p>渋谷駅から少し歩いた隠れ家。木の温もりを感じる和モダンな内装で、店員さんの活気ある接客もよかった。呑める餃子はもちもちの厚め皮。</p><span class="by">by <b>89にゃん</b>（4.0点）</span></div>
+      <div class="quote"><span class="tag">名物</span><div class="ttl">柔らかい茹でタン・肉汁の餃子</div><p>呑める餃子は肉汁たっぷり、茹でタンはとても柔らかく、料理は丁寧。牛タンに添えられたわさびは辛すぎず。</p><span class="by">by <b>Pecopeco / mickey</b>（4.5点）</span></div>
+      <div class="quote"><span class="tag w">混雑</span><div class="ttl">休日16時でほぼ満席。予約必須店</div><p>「ワンランク上の大衆酒場」。若者中心で常に満席状態、ゆっくり話し込むにはやや厳しい場面も。</p><span class="by">by <b>__yaka / まるこげ</b>（3.6〜3.7点）</span></div>
+      <div class="quote"><span class="tag w">気になる点</span><div class="ttl">餃子はお店のおすすめでしたが普通でした</div><p>ポテサラ（しば漬け入り）や茹でタンは美味しい。一方で看板の餃子は「普通」、ごま鯖は甘め。サービスは一生懸命。</p><span class="by">by <b>ちゃす之新</b>（3.5点 / サービス3.0）</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>示唆（事前リサーチ仮説への反映）</h2>
+    <div class="insight">
+      <div class="row"><div class="ic">1</div><div class="tx"><b>名物で口コミワードを固める狙いは機能</b>。言及筆頭が「呑める餃子」＝⑧⑨の仮説（名物で注文入口を固定）を口コミが裏付け。</div></div>
+      <div class="row"><div class="ic">2</div><div class="tx"><b>「予約必須・満席」＝強い集客力</b>。事前リサーチの月商・回転[推]を支持。当日も満席率を実測する価値あり。</div></div>
+      <div class="row"><div class="ic">3</div><div class="tx"><b>コスパ評価が高い</b>（飲み放題付4,000円台）。⑥消費形態の「会計時の納得感」仮説と整合。</div></div>
+      <div class="row"><div class="ic">!</div><div class="tx"><b>狙いとのギャップ＝改善提案の種</b>。「気軽に・ワンランク上」の狙いに対し、<b>全席喫煙・喧騒・サービスのムラ</b>がターゲット（20〜30代幹事）の体験を削っている可能性。当日の重点確認ポイント。</div></div>
+      <div class="row"><div class="ic">▲</div><div class="tx"><b>当日の検証</b>：①看板の餃子が「普通」評を覆す品質か ②喫煙環境が想定客層に合うか ③ピーク時の騒がしさと会話のしやすさ。</div></div>
+    </div>
+  </section>
+
+  <footer><b>分析方法・注記</b><br>
+    食べログの口コミ一覧および個別レビューから<b>取得できた22件</b>を定性分析。総合3.58点・414件は2026-06時点（食べログ直接取得）。Yahoo!マップ3.96点は検索要約。<b>himaridou のような全期間の月次時系列・項目別スコア推移は、非ログインでは個別レビューを十分に取得できないため作成していない</b>（件数・トピック比率はサンプル22件の相対傾向）。1件が複数区分に該当するため合計は100%を超える。<br>
+    出典：<a href="https://tabelog.com/tokyo/A1303/A130301/13312438/dtlrvwlst/">食べログ 口コミ一覧</a> ／ <a href="https://www.hotpepper.jp/strJ004444155/">HotPepper</a> ／ 作成 2026-06-22（内部検討用）
+  </footer>
+</div></body></html>

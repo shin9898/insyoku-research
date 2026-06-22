@@ -5,30 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>INSYOKU RESEARCH｜飲食店 事前リサーチ集</title>
 <style>
-  :root { --ink:#1f2328; --sub:#656d76; --line:#d0d7de; --accent:#a4243b; --bg:#faf8f5; }
+  :root { --ink:#1f2328; --sub:#656d76; --line:#d8dee4; --accent:#1b3a5b; --accent-tint:#eaf0f6; --bg:#faf8f5; --card:#fff; }
   * { box-sizing: border-box; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
     line-height: 1.7; -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
-  header { border-bottom: 2px solid var(--accent); padding-bottom: 24px; margin-bottom: 40px; }
-  .eyebrow { color: var(--accent); font-size: 13px; letter-spacing: .12em; font-weight: 700; margin: 0 0 8px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 22px 96px; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 22px; margin-bottom: 26px; }
+  .eyebrow { color: var(--accent); font-size: 13px; letter-spacing: .14em; font-weight: 700; margin: 0 0 8px; }
   h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: .01em; }
   .lead { color: var(--sub); margin: 0; font-size: 15px; }
-  ul.cards { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
-  a.card {
-    display: block; text-decoration: none; color: inherit;
-    background: #fff; border: 1px solid var(--line); border-radius: 12px;
-    padding: 22px 24px; transition: border-color .15s, transform .15s, box-shadow .15s;
+
+  .toolbar { display:flex; gap:12px; align-items:center; margin-bottom:22px; flex-wrap:wrap; }
+  .search { flex:1; min-width:220px; position:relative; }
+  .search input {
+    width:100%; padding:11px 14px 11px 38px; font-size:15px; border:1px solid var(--line);
+    border-radius:10px; background:var(--card); color:var(--ink); outline:none;
   }
-  a.card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.06); }
-  .card h2 { margin: 0 0 4px; font-size: 18px; }
-  .card p { margin: 0; color: var(--sub); font-size: 14px; }
-  .card .go { color: var(--accent); font-size: 13px; font-weight: 700; margin-top: 10px; display: inline-block; }
-  footer { margin-top: 56px; color: var(--sub); font-size: 12px; }
-  footer a { color: var(--sub); }
+  .search input:focus { border-color:var(--accent); }
+  .search::before { content:"⌕"; position:absolute; left:13px; top:8px; font-size:18px; color:var(--sub); }
+  .count { font-size:13px; color:var(--sub); white-space:nowrap; }
+  .count b { color:var(--accent); font-size:16px; }
+
+  .stores { display:grid; gap:16px; }
+  .store {
+    background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .store:hover { border-color:var(--accent); box-shadow:0 6px 20px rgba(20,40,60,.07); }
+  .store .top { display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .store h2 { margin:0; font-size:19px; }
+  .store .meta { color:var(--sub); font-size:12.5px; margin:5px 0 14px; }
+  .store .meta span { margin-right:14px; white-space:nowrap; }
+  .reports { display:flex; gap:10px; flex-wrap:wrap; }
+  .reports a {
+    display:inline-flex; align-items:center; gap:7px; text-decoration:none;
+    background:var(--accent-tint); color:var(--accent); font-weight:700; font-size:13.5px;
+    padding:9px 15px; border-radius:9px; border:1px solid transparent; transition:background .15s, border-color .15s;
+  }
+  .reports a:hover { background:#dde7f1; border-color:var(--accent); }
+  .reports a.muted { background:#f1f1ee; color:var(--sub); font-weight:600; }
+  .reports a .arr { font-size:12px; }
+  .badge { font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:99px; background:var(--accent); color:#fff; white-space:nowrap; }
+  .badge.up { background:#7a3bb5; }
+
+  .empty { display:none; text-align:center; color:var(--sub); padding:48px 0; font-size:14px; }
+
+  footer { margin-top:42px; color:var(--sub); font-size:12px; border-top:1px solid var(--line); padding-top:18px; }
+  footer a { color:var(--accent); }
+  @media (max-width:560px){ .wrap{padding:40px 16px 72px;} h1{font-size:25px;} }
 </style>
 </head>
 <body>
@@ -36,36 +63,68 @@
     <header>
       <p class="eyebrow">INSYOKU RESEARCH</p>
       <h1>飲食店 事前リサーチ集</h1>
-      <p class="lead">臨店前の事前準備ドキュメント（店舗ごとのリサーチ／レビュー分析）</p>
+      <p class="lead">臨店前の事前準備ドキュメント（店舗ごとに 事前レポート ／ 口コミ分析）。</p>
     </header>
 
-    <ul class="cards">
-      <li>
-        <a class="card" href="tsumugido/report.html">
+    <div class="toolbar">
+      <div class="search"><input id="q" type="search" placeholder="店名・エリアで絞り込み（例：渋谷、つむぎ堂）" aria-label="店舗を検索"></div>
+      <div class="count"><b id="n">2</b> 店舗</div>
+    </div>
+
+    <div class="stores" id="stores">
+
+      <article class="store" data-name="酒場 つむぎ堂 渋谷店 渋谷 大衆酒場 LINK STYLE つむぎどう">
+        <div class="top">
           <h2>酒場 つむぎ堂 渋谷店</h2>
-          <p>事前レポート（コンセプトシート9項目・お店の雰囲気・推しメニュー）。2026.7.1 訪問。</p>
-          <span class="go">レポートを開く →</span>
-        </a>
-      </li>
-      <li>
-        <a class="card" href="himaridou/report.html">
+          <span class="badge up">NEW</span>
+        </div>
+        <div class="meta"><span>📍 渋谷・宇田川町</span><span>🍶 ワンランク上の大衆酒場</span><span>📅 2026.7.1 訪問</span></div>
+        <div class="reports">
+          <a href="tsumugido/report.html">事前レポート <span class="arr">→</span></a>
+          <a href="tsumugido/review.html">口コミ分析 <span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="store" data-name="酒場 ひまり堂 恵比寿店 恵比寿 ネオ大衆酒場 ひまりどう">
+        <div class="top">
           <h2>酒場 ひまり堂 恵比寿店</h2>
-          <p>事前リサーチレポート（出店前の市場・立地・競合）。</p>
-          <span class="go">レポートを開く →</span>
-        </a>
-      </li>
-      <li>
-        <a class="card" href="himaridou/review.html">
-          <h2>酒場 ひまり堂 恵比寿店｜レビュー分析</h2>
-          <p>口コミ・レビューデータの分析。</p>
-          <span class="go">分析を開く →</span>
-        </a>
-      </li>
-    </ul>
+        </div>
+        <div class="meta"><span>📍 恵比寿</span><span>🍶 ネオ大衆酒場</span><span>⭐ 食べログ 3.45</span></div>
+        <div class="reports">
+          <a href="himaridou/report.html">事前レポート <span class="arr">→</span></a>
+          <a href="himaridou/review.html">口コミ分析 <span class="arr">→</span></a>
+          <a class="muted" href="himaridou/report.md">report.md</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="empty" id="empty">該当する店舗が見つかりませんでした。</div>
 
     <footer>
-      <a href="https://github.com/shin9898/insyoku-research">GitHub リポジトリ</a>
+      <a href="https://github.com/shin9898/insyoku-research">GitHub リポジトリ</a> ・ 内部検討用
     </footer>
   </div>
+
+  <script>
+    (function(){
+      var q = document.getElementById('q');
+      var stores = Array.prototype.slice.call(document.querySelectorAll('.store'));
+      var n = document.getElementById('n');
+      var empty = document.getElementById('empty');
+      function apply(){
+        var t = (q.value || '').trim().toLowerCase();
+        var shown = 0;
+        stores.forEach(function(s){
+          var hit = !t || s.getAttribute('data-name').toLowerCase().indexOf(t) !== -1;
+          s.style.display = hit ? '' : 'none';
+          if (hit) shown++;
+        });
+        n.textContent = shown;
+        empty.style.display = shown ? 'none' : 'block';
+      }
+      q.addEventListener('input', apply);
+    })();
+  </script>
 </body>
 </html>
