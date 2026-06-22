@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酒場ひまり堂 恵比寿店 リサーチ</title>
+<style>
+  :root { --ink:#1f2328; --sub:#656d76; --line:#d0d7de; --accent:#a4243b; --bg:#faf8f5; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 24px; margin-bottom: 40px; }
+  .eyebrow { color: var(--accent); font-size: 13px; letter-spacing: .12em; font-weight: 700; margin: 0 0 8px; }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: .01em; }
+  .lead { color: var(--sub); margin: 0; font-size: 15px; }
+  ul.cards { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  a.card {
+    display: block; text-decoration: none; color: inherit;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 24px; transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  a.card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  .card h2 { margin: 0 0 4px; font-size: 18px; }
+  .card p { margin: 0; color: var(--sub); font-size: 14px; }
+  .card .go { color: var(--accent); font-size: 13px; font-weight: 700; margin-top: 10px; display: inline-block; }
+  footer { margin-top: 56px; color: var(--sub); font-size: 12px; }
+  footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">INSYOKU RESEARCH</p>
+      <h1>酒場ひまり堂 恵比寿店</h1>
+      <p class="lead">事前リサーチレポート / レビュー分析</p>
+    </header>
+
+    <ul class="cards">
+      <li>
+        <a class="card" href="himaridou/report.html">
+          <h2>事前レポート</h2>
+          <p>出店前の市場・立地・競合などの事前リサーチ。</p>
+          <span class="go">レポートを開く →</span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="himaridou/review.html">
+          <h2>レビュー分析</h2>
+          <p>口コミ・レビューデータの分析。</p>
+          <span class="go">分析を開く →</span>
+        </a>
+      </li>
+    </ul>
+
+    <footer>
+      ソース: <a href="himaridou/report.md">report.md</a> ·
+      <a href="https://github.com/ToshikazuHirano333/insyoku-research">GitHub リポジトリ</a>
+    </footer>
+  </div>
+</body>
+</html>

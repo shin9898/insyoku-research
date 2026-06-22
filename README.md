@@ -1,10 +1,11 @@
 # insyoku-research
 
-飲食店リサーチ資料。
+飲食店リサーチ資料。GitHub Pages で公開。
 
-## ひまり堂
+🌐 公開ページ: https://toshikazuhirano333.github.io/insyoku-research/
 
-酒場ひまり堂 恵比寿店に関する事前レポート・レビュー分析。
+## himaridou（酒場ひまり堂 恵比寿店）
 
-- `事前レポート_酒場ひまり堂恵比寿店.md` / `.html` — 事前リサーチレポート
-- `レビュー分析_酒場ひまり堂恵比寿店.html` — レビュー分析
+- `himaridou/report.html` / `report.md` — 事前リサーチレポート
+- `himaridou/review.html` — レビュー分析
+- `index.html` — トップ(入口)ページ
