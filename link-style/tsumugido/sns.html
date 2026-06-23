@@ -55,6 +55,25 @@
   .ana .ins{margin-top:10px;background:var(--key-tint);border-radius:9px;padding:10px 12px;font-size:12.5px;}
   .ana .ins b{color:var(--key);}
   .ana .dn{font-size:11px;color:var(--sub);margin-top:9px;line-height:1.6;}
+  .sec{margin-bottom:14px;}
+  .sec>b{font-size:13px;color:var(--key);}
+  .tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:6px;}
+  .tbl th,.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .tbl th{background:var(--key-tint);color:var(--key);font-weight:700;font-size:11.5px;}
+  .tbl tr:last-child td{border-bottom:none;}
+  .tbl .em{font-weight:700;color:var(--key);white-space:nowrap;}
+  .tl{margin:6px 0 0;}
+  .tl .e{position:relative;padding:0 0 11px 18px;border-left:2px solid var(--key-tint);}
+  .tl .e:last-child{border-left-color:transparent;padding-bottom:0;}
+  .tl .e::before{content:"";position:absolute;left:-5px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--key);}
+  .tl .d{font-weight:700;color:var(--key);font-size:12px;}
+  .tl .t{font-size:12.5px;}
+  .strat{background:var(--key-tint);border-radius:10px;padding:12px 14px;font-size:13px;margin-top:6px;}
+  .strat .q{color:var(--key);font-weight:700;margin-bottom:6px;}
+  .strat ul{margin:0;padding-left:18px;} .strat li{margin:5px 0;}
+  .cmp{display:flex;gap:8px;flex-wrap:wrap;}
+  .cmp .c{flex:1;min-width:110px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-align:center;}
+  .cmp .c .h{font-size:11px;color:var(--sub);} .cmp .c .v{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--key);font-size:18px;}
   .note2{font-size:11.5px;color:var(--sub);margin-top:18px;line-height:1.7;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
   @media(max-width:560px){ .accs{grid-template-columns:1fr;} }
 </style>
@@ -73,12 +92,66 @@
       <div class="hsub">公式アカウントの把握と、各SNSの口コミ・UGC・PR投稿を一括で見にいくリンク集。キーワードを変えると全リンクが切り替わります。</div>
     </header>
 
-    <div class="grp">SNS分析（所見）</div>
+    <div class="grp">この店のSNS実態（つむぎ堂 渋谷）</div>
     <div class="ana">
-      <div class="stat"><div class="s"><div class="v">約2.2万</div><div class="k">公式IG @sakaba_tsumugido</div></div><div class="s"><div class="v">約1.4万</div><div class="k">新宿店 @tsumugido_shinjuku</div></div></div>
-      <ul><li><b>グループ最大級のIG認知資産</b>。全店共通の公式(2.2万)＋店舗別アカウントの二段構え。</li><li>発信は<b>名物（茹でタン・呑める餃子）中心の写真/リール</b>。来店者・グルメ系インフルエンサーの<b>UGC/PR投稿（#pr）</b>が多数。</li><li>ぐるなび記事の「<b>インフルエンサー来店で自然拡散</b>」「口コミ最優先」方針が、実際のアカウント規模とUGC量に表れている。</li></ul>
-      <div class="ins">示唆 → ⑨販促仮説（広告より体験で口コミ増殖）は<b>裏付けあり</b>。当日は店頭・卓上のSNS誘導（ハッシュタグ提示等）の有無、UGCの取りこぼしが無いかを確認。</div>
-      <div class="dn">※ フォロワー数は取得時点の参考値（変動）。投稿の精密なエンゲージメント集計は非ログインでは取得困難なため定性。</div>
+      <div class="sec"><b>アカウント</b>
+        <table class="tbl"><tr><th>アカウント</th><th>種別</th><th>規模・発信スタイル</th></tr>
+          <tr><td class="em">@sakaba_tsumugido</td><td>統括公式</td><td>約2.2万・告知/道案内中心（一方向発信）</td></tr>
+          <tr><td class="em">@tsumugido_shinjuku</td><td>新宿店</td><td>約1.4万・店舗発信</td></tr>
+          <tr><td>（渋谷店）</td><td>—</td><td>統括公式で発信（#渋谷グルメ #つむぎ堂 等）</td></tr>
+        </table>
+      </div>
+      <div class="sec"><b>インフルエンサー / UGC の傾向</b>
+        <table class="tbl"><tr><th>傾向</th><th>内容要素</th></tr>
+          <tr><td class="em">グルメ系クリエイターのPR(#pr)が多数</td><td>名物の希少性・価格を列挙する規格化フォーマット。予算¥4,000〜6,000を提示</td></tr>
+          <tr><td class="em">新店(渋谷)OPEN投稿が集中</td><td>「9月22日OPEN」訴求でローンチ認知を立ち上げ</td></tr>
+        </table>
+      </div>
+      <div class="sec"><b>SNSで押し出される一品</b>：超ホロホロ茹でタン¥638／呑める餃子¥528〜／国産鶏の肉汁焼き¥1,408／つむぎ堂ポテサラ¥605（九谷焼風の器＋食用花＝映え）</div>
+      <div class="ins">示唆 → 公式は告知特化、日々の拡散はインフルエンサーに外注、という分業が明確。⑨販促仮説「体験で口コミ増殖」は<b>裏付けあり</b>。当日は店頭・卓上のSNS誘導(ハッシュタグ提示)とUGCの取りこぼしを確認。</div>
+    </div>
+
+    <div class="grp">店間 SNS 強弱（自社アカウント）</div>
+    <div class="ana">
+      <div class="cmp">
+        <div class="c"><div class="h">つむぎ堂 公式</div><div class="v">約2.2万</div></div>
+        <div class="c"><div class="h">リタ 新宿</div><div class="v">約9,400</div></div>
+        <div class="c"><div class="h">ひまり堂 恵比寿</div><div class="v">1,424</div></div>
+      </div>
+      <div class="ins" style="margin-top:10px">示唆 → 同じLINK STYLEでも自社IGの規模差が大きい。<b>つむぎ堂＝認知資産／ひまり堂＝伸びしろ（自社発信が弱点）／リタ＝新業態で順調</b>。⑨販促の打ち手は店ごとに変える必要がある。</div>
+    </div>
+
+    <div class="grp">LINK STYLE ドミナント戦略マップ（グループ）</div>
+    <div class="ana">
+      <div class="sec"><b>出店タイムライン（2017創業〜）</b>
+        <div class="tl">
+          <div class="e"><span class="d">2017</span> <span class="t">川越で創業「個室居酒屋 鶏の吉助」</span></div>
+          <div class="e"><span class="d">〜千葉</span> <span class="t">「ネオ大衆酒場 サワマル」</span></div>
+          <div class="e"><span class="d">2022.3</span> <span class="t">新宿「酒場つむぎ堂」＝都内初出店（Z世代向け）</span></div>
+          <div class="e"><span class="d">2023</span> <span class="t">新宿「めしや ヒロキ倶楽部」</span></div>
+          <div class="e"><span class="d">2024.4</span> <span class="t">恵比寿「酒場ひまり堂」＝全世代・展開型</span></div>
+          <div class="e"><span class="d">2025.2</span> <span class="t">新宿「ビストロ リタ」＝初の洋業態</span></div>
+          <div class="e"><span class="d">2025.9 → 2026.3</span> <span class="t">つむぎ堂 渋谷 → 池袋へ多店化／2026年に5店出店計画</span></div>
+        </div>
+      </div>
+      <div class="sec"><b>ブランド別の収益構造</b>
+        <table class="tbl"><tr><th>ブランド</th><th>規模</th><th>月商 / 客単価</th></tr>
+          <tr><td class="em">つむぎ堂(新宿)</td><td>23坪</td><td>月商1,700万</td></tr>
+          <tr><td class="em">ヒロキ倶楽部</td><td>14坪</td><td>月商1,100万</td></tr>
+          <tr><td class="em">ひまり堂(恵比寿)</td><td>23坪52席</td><td>客単価3,900円</td></tr>
+          <tr><td class="em">リタ(新宿)</td><td>27坪68席</td><td>月商1,350万・客単価5,500円</td></tr>
+        </table>
+      </div>
+      <div class="strat">
+        <div class="q">“ 馬淵和也氏は「WEBを使った販促を得意とする」 ”</div>
+        <ul>
+          <li><b>公式アカウント＝告知・来店導線に特化</b>（道案内ハイライト等の一方向発信）</li>
+          <li><b>日々のエンゲージはインフルエンサーPR（#pr）に外注</b>＝料理名・価格を列挙する規格化リール/投稿</li>
+          <li><b>新店OPEN時に同時多発UGC</b>で「映え×大衆価格」の認知を一気に立ち上げ</li>
+          <li>名物（茹でタン/和牛ハンバーグ等）を<b>口コミワードとして固定</b>し拡散を統一</li>
+        </ul>
+      </div>
+      <div class="dn">※ フォロワー数は取得時点の参考値（変動）。Instagram内部指標（投稿数・各投稿のいいね）は非ログインでは取得困難なため、UGCは公開投稿の傾向から定性評価。出店/月商は各記事(food-stadium / 飲食店ドットコム / ぐるなび)に基づく。</div>
     </div>
 
     <div class="kwbox">
