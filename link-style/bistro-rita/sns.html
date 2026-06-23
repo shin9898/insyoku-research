@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>SNSリサーチ｜ビストロ リタ 新宿店</title>
+<title>SNSリサーチレポート｜ビストロ リタ 新宿店</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
@@ -11,71 +11,71 @@
   :root{
     --key:#7a2e3b; --key2:#9c4456; --key-tint:#f5e9ec; --line:#e7e2dd;
     --ink:#1f2630; --sub:#5c6672; --paper:#faf8f4; --card:#fff;
+    --watch:#b5651d; --watch-bg:#fbf1e6; --good:#1f7a3d;
   }
   *{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;}
   body{margin:0;background:var(--paper);color:var(--ink);font-feature-settings:"palt";
-    font-family:"Noto Sans JP",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;padding-bottom:40px;}
-  .wrap{max-width:760px;margin:0 auto;padding:16px 14px 40px;}
+    font-family:"Noto Sans JP",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;padding-bottom:40px;font-size:14.5px;}
+  .wrap{max-width:820px;margin:0 auto;padding:16px 16px 40px;}
   .bar{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.95);backdrop-filter:blur(6px);
     display:flex;gap:14px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);}
   .bar a{font:600 13px/1 "Noto Sans JP";color:var(--key);text-decoration:none;white-space:nowrap;}
   .bar a.sub{color:var(--sub);}
-  header.h{padding:18px 2px 6px;}
-  .eyebrow{font-size:11.5px;letter-spacing:.14em;color:var(--key);font-weight:700;}
-  h1{font-family:"Noto Serif JP",serif;font-size:24px;margin:5px 0 3px;color:var(--key);}
+  header.h{padding:20px 2px 6px;border-bottom:3px solid var(--key);margin-bottom:8px;}
+  .eyebrow{font-size:11.5px;letter-spacing:.16em;color:var(--key);font-weight:700;}
+  h1{font-family:"Noto Serif JP",serif;font-size:27px;margin:6px 0 4px;color:var(--key);line-height:1.3;}
   .hsub{font-size:12.5px;color:var(--sub);}
-  .kwbox{margin:16px 0 6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 15px;}
-  .kwbox label{font-size:12.5px;font-weight:700;color:var(--key);display:block;margin-bottom:6px;}
-  .kwbox input{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 13px;font-size:16px;font-family:inherit;outline:none;}
-  .kwbox input:focus{border-color:var(--key);}
-  .kwbox .note{font-size:11.5px;color:var(--sub);margin-top:7px;}
-  .grp{font-family:"Noto Serif JP",serif;font-size:14px;font-weight:700;color:var(--key);
-    margin:26px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--key-tint);}
-  .accs{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .acc{background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 14px;text-decoration:none;color:inherit;display:block;}
-  .acc:hover{border-color:var(--key);}
-  .acc .pf{font-size:11px;color:var(--sub);font-weight:700;}
-  .acc .hd{font-size:14px;font-weight:700;color:var(--key);margin:2px 0;word-break:break-all;}
-  .acc .mt{font-size:11.5px;color:var(--sub);}
-  .acc.none{color:var(--sub);font-size:12.5px;}
-  .plat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:11px;}
-  .plat .pt{font-size:14px;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
-  .plat .pt .ic{width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;}
-  .links{display:flex;flex-wrap:wrap;gap:8px;}
-  .links a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:var(--key-tint);
-    color:var(--key);font-weight:700;font-size:13px;padding:9px 14px;border-radius:9px;border:1px solid transparent;}
-  .links a:hover{background:#dde7f1;border-color:var(--key);}
-  .ana{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
-  .ana .stat{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
-  .ana .s{background:var(--key-tint);border-radius:9px;padding:8px 12px;}
-  .ana .s .v{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--key);font-size:18px;}
-  .ana .s .k{font-size:11px;color:var(--sub);}
-  .ana ul{margin:6px 0 0;padding-left:18px;} .ana li{font-size:13px;margin:5px 0;}
-  .ana .ins{margin-top:10px;background:var(--key-tint);border-radius:9px;padding:10px 12px;font-size:12.5px;}
-  .ana .ins b{color:var(--key);}
-  .ana .dn{font-size:11px;color:var(--sub);margin-top:9px;line-height:1.6;}
-  .sec{margin-bottom:14px;}
-  .sec>b{font-size:13px;color:var(--key);}
-  .tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:6px;}
+  .leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:14px 0 4px;font-size:11.5px;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px 13px;}
+  .leg b{color:var(--key);}
+  h2{font-size:18px;color:var(--key);margin:30px 0 10px;padding-left:11px;border-left:5px solid var(--key);line-height:1.4;}
+  h2 .star{color:var(--watch);font-size:12px;font-weight:700;margin-left:6px;}
+  h3{font-size:14.5px;color:var(--key);margin:16px 0 6px;}
+  .sum{background:var(--key);color:#fff;border-radius:12px;padding:18px 20px;}
+  .sum ul{margin:0;padding-left:18px;} .sum li{margin:8px 0;font-size:13.5px;line-height:1.7;}
+  .sum b{background:rgba(255,255,255,.18);padding:0 5px;border-radius:4px;}
+  .sum .tag{font-size:10.5px;opacity:.72;font-weight:700;}
+  .tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:4px;}
   .tbl th,.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
   .tbl th{background:var(--key-tint);color:var(--key);font-weight:700;font-size:11.5px;}
   .tbl tr:last-child td{border-bottom:none;}
   .tbl .em{font-weight:700;color:var(--key);white-space:nowrap;}
-  .tl{margin:6px 0 0;}
+  .tbl .big{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--key);}
+  p.t{font-size:13.5px;margin:8px 0;} ul.t{font-size:13.5px;margin:6px 0;padding-left:20px;} ul.t li{margin:5px 0;}
+  .tl{margin:8px 0 0;}
   .tl .e{position:relative;padding:0 0 11px 18px;border-left:2px solid var(--key-tint);}
   .tl .e:last-child{border-left-color:transparent;padding-bottom:0;}
   .tl .e::before{content:"";position:absolute;left:-5px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--key);}
-  .tl .d{font-weight:700;color:var(--key);font-size:12px;}
-  .tl .t{font-size:12.5px;}
-  .strat{background:var(--key-tint);border-radius:10px;padding:12px 14px;font-size:13px;margin-top:6px;}
-  .strat .q{color:var(--key);font-weight:700;margin-bottom:6px;}
-  .strat ul{margin:0;padding-left:18px;} .strat li{margin:5px 0;}
-  .cmp{display:flex;gap:8px;flex-wrap:wrap;}
-  .cmp .c{flex:1;min-width:110px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-align:center;}
-  .cmp .c .h{font-size:11px;color:var(--sub);} .cmp .c .v{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--key);font-size:18px;}
-  .note2{font-size:11.5px;color:var(--sub);margin-top:18px;line-height:1.7;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
-  @media(max-width:560px){ .accs{grid-template-columns:1fr;} }
+  .tl .d{font-weight:700;color:var(--key);font-size:12.5px;}
+  .strat{background:var(--key-tint);border-radius:10px;padding:14px 16px;margin-top:8px;}
+  .strat .q{color:var(--key);font-weight:700;margin-bottom:8px;font-style:italic;}
+  .ol{counter-reset:n;list-style:none;padding:0;margin:8px 0 0;}
+  .ol li{counter-increment:n;position:relative;padding:9px 0 9px 40px;border-bottom:1px dashed var(--line);font-size:13.5px;}
+  .ol li:last-child{border-bottom:none;}
+  .ol li::before{content:counter(n);position:absolute;left:0;top:8px;width:26px;height:26px;background:var(--key);color:#fff;border-radius:50%;text-align:center;line-height:26px;font-weight:700;font-family:"Noto Serif JP",serif;font-size:13px;}
+  .memo{background:var(--watch-bg);border:1px solid #f0dcc7;border-radius:10px;padding:12px 15px;font-size:12.5px;color:#6a553a;line-height:1.7;}
+  .memo b{color:var(--watch);}
+  .cmp{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+  .cmp .c{flex:1;min-width:110px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 11px;text-align:center;}
+  .cmp .c .hh{font-size:11px;color:var(--sub);} .cmp .c .v{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--key);font-size:19px;}
+  .ins{background:var(--key-tint);border-radius:9px;padding:10px 13px;font-size:12.5px;margin-top:10px;}
+  .ins b{color:var(--key);}
+  .kwbox{margin:8px 0 6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 15px;}
+  .kwbox label{font-size:12.5px;font-weight:700;color:var(--key);display:block;margin-bottom:6px;}
+  .kwbox input{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 13px;font-size:16px;font-family:inherit;outline:none;}
+  .kwbox input:focus{border-color:var(--key);}
+  .kwbox .note{font-size:11.5px;color:var(--sub);margin-top:7px;}
+  .plat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;}
+  .plat .pt{font-size:13.5px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .plat .pt .ic{width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;}
+  .links{display:flex;flex-wrap:wrap;gap:8px;}
+  .links a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:var(--key-tint);color:var(--key);font-weight:700;font-size:13px;padding:9px 13px;border-radius:9px;border:1px solid transparent;}
+  .links a:hover{background:#dde7f1;border-color:var(--key);}
+  .acc{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 12px;text-decoration:none;color:var(--key);font-weight:700;font-size:13px;margin:0 8px 8px 0;}
+  .acc:hover{border-color:var(--key);}
+  footer{margin-top:30px;border-top:1px solid var(--line);padding-top:16px;font-size:11.5px;color:var(--sub);line-height:1.7;}
+  footer a{color:var(--key2);word-break:break-all;}
+  @media(max-width:680px){ h1{font-size:23px;} .wrap{padding:14px 12px 40px;} }
 </style>
 </head>
 <body>
@@ -87,147 +87,160 @@
 
   <div class="wrap">
     <header class="h">
-      <div class="eyebrow">SNS リサーチ ｜ 全プラットフォーム横断</div>
-      <h1>ビストロ リタ 新宿店</h1>
-      <div class="hsub">公式アカウントの把握と、各SNSの口コミ・UGC・PR投稿を一括で見にいくリンク集。キーワードを変えると全リンクが切り替わります。</div>
+      <div class="eyebrow">SNS リサーチレポート ｜ Instagram運用と販促の型</div>
+      <h1>ビストロ リタ 新宿店（LINK STYLE）</h1>
+      <div class="hsub">目的: LINK STYLE 初の洋業態「リタ」のSNS運用と販促の型を整理し、自社CSの持ち帰りにする。作成 2026-06-22。</div>
+      <div class="leg">
+        <span><b>【確】</b>公開情報で確認</span>
+        <span><b>【観】</b>検索・公開投稿で確認</span>
+        <span><b>【推】</b>記事・口コミからの推定</span>
+        <span><b>【独自】</b>本リサーチ集のグループ横断分析</span>
+      </div>
     </header>
 
-    <div class="grp">この店のSNS実態（ビストロ リタ 新宿）</div>
-    <div class="ana">
-      <div class="sec"><b>アカウント</b>
-        <table class="tbl"><tr><th>アカウント</th><th>種別</th><th>規模・発信スタイル</th></tr>
-          <tr><td class="em">@rita_shinjuku</td><td>公式</td><td>約9,400・開店約1年で立ち上がり順調</td></tr>
-        </table>
-      </div>
-      <div class="sec"><b>インフルエンサー / UGC（実例）</b>
-        <table class="tbl"><tr><th>投稿主(例)</th><th>形式</th><th>内容要素</th></tr>
-          <tr><td class="em">@moto_gurume</td><td>TikTok(#pr)</td><td>料理名・価格を列挙（ウフマヨ572円／フォアグラユッケ1639円／呑めるハンバーグ1518円 等）。「地下の隠れ家」「コスパ」を訴求</td></tr>
-          <tr><td class="em">@e_estam9</td><td>Instagram</td><td>新宿の新店として紹介。デート/女子会向けの切り口</td></tr>
-        </table>
-      </div>
-      <div class="sec"><b>SNSで押し出される一品</b>：黒毛和牛レアハンバーグ／フォアグラユッケ¥1,639／呑めるハンバーグ¥1,518／ウフマヨ¥572／リタのポテサラ¥638</div>
-      <div class="ins">示唆 → 洋業態でもインフルエンサーPRの規格化フォーマットを踏襲。客単価5,500円帯ゆえUGCの「コスパ」訴求が価格の納得感を作っている可能性。当日その整合を確認。</div>
+    <h2>0. 30秒サマリー</h2>
+    <div class="sum"><ul>
+      <li><b>LINK STYLE 初の洋業態</b>「ワンランク上の大衆ビストロ」。2025/2/27 新宿OPEN・27坪68席・開業2か月で<b>月商1,350万</b>。<span class="tag">【確】</span></li>
+      <li>公式IG <b>@rita_shinjuku（約9,400）</b>。つむぎ堂で確立した<b>インフルエンサーPR型を踏襲</b>。<span class="tag">【観】</span></li>
+      <li>TikTok/IGで<b>グルメ系インフルエンサーのPR投稿（#pr）多数</b>。「地下の隠れ家」「コスパ」が定番ワード。<span class="tag">【観】</span></li>
+      <li>名物＝<b>黒毛和牛レアハンバーグ／フォアグラユッケ／呑めるハンバーグ</b>。料理名・価格を列挙する規格化リール。<span class="tag">【観】</span></li>
+      <li>想定<b>客単価5,500円</b>（つむぎ堂4,000より高単価）。UGCの「コスパ」訴求が価格の納得感を作る。<span class="tag">【確/推】</span></li>
+      <li>食べログ<b>3.42 / 752件</b>。<span class="tag">【確】</span></li>
+    </ul></div>
+
+    <h2>1. Instagram アカウント・マップ</h2>
+    <table class="tbl">
+      <tr><th>アカウント</th><th>位置づけ</th><th>フォロワー</th><th>特徴</th></tr>
+      <tr><td class="em">@rita_shinjuku</td><td>公式</td><td class="big">約9,400</td><td>開店約1年で立ち上がり順調。営業時間・予約導線を発信。</td></tr>
+    </table>
+    <p class="t">※ フォロワーは取得時点（2026-06）の表示値で変動。fork元のIG実地調査対象外のため、検索・公開投稿ベース。</p>
+
+    <h2>2. 自社アカウントの投稿実態</h2>
+    <ul class="t">
+      <li>公式は<b>告知・メニュー紹介中心</b>。日々のエンゲージはインフルエンサーPRに依存する<b>つむぎ堂と同じ二層型</b>と見られる。<span style="color:var(--sub)">【推】</span></li>
+    </ul>
+
+    <h2>3. 集客の主役 ＝ インフルエンサー／UGC の PR 投稿<span class="star">★最重要</span></h2>
+    <table class="tbl">
+      <tr><th>投稿主(例)</th><th>形式</th><th>内容のポイント</th></tr>
+      <tr><td class="em">@moto_gurume</td><td>TikTok(#pr)</td><td>料理名・価格を列挙（ウフマヨ572／フォアグラユッケ1639／呑めるハンバーグ1518 等）。「地下の隠れ家」「コスパ」を訴求。</td></tr>
+      <tr><td class="em">@e_estam9</td><td>Instagram</td><td>新宿の新店として紹介。デート/女子会向けの切り口。</td></tr>
+    </table>
+    <div class="ins"><b>示唆</b> → つむぎ堂の"発射台"型ローンチ（OPEN時にインフルエンサーを束ねる）を洋業態でも踏襲。#pr 明記で物量拡散。<span style="color:var(--sub)">【観/独自】</span></div>
+
+    <h2>4. Instagram で押し出されている名物・メニュー</h2>
+    <table class="tbl">
+      <tr><th>商品</th><th>価格</th><th>位置づけ</th></tr>
+      <tr><td class="em">黒毛和牛レアハンバーグ</td><td class="big">¥1,280〜</td><td>三大名物の筆頭。口コミでも「絶品」最頻。</td></tr>
+      <tr><td class="em">フォアグラユッケ</td><td class="big">¥1,639</td><td>記事掲載の名物。</td></tr>
+      <tr><td class="em">呑めるハンバーグ</td><td class="big">¥1,518</td><td>"呑める"シリーズ（つむぎ堂の呑める餃子の型）。</td></tr>
+      <tr><td>ウフマヨ／リタのポテサラ</td><td>¥572 / ¥638</td><td>映え＆コスパのアテ。</td></tr>
+      <tr><td>ズワイ蟹の濃厚リゾット</td><td>¥1,518</td><td>洋の〆・映え枠。</td></tr>
+    </table>
+    <p class="t">「わかりやすさ・定番を外さない」名物方針はつむぎ堂と同一＝<b>LINK STYLEの型を洋に移植</b>。</p>
+
+    <h2>5. ターゲット／利用動機（SNSから読み取れる像）</h2>
+    <ul class="t">
+      <li><b>20代後半〜30代</b>。デート・女子会・同僚の飲み。完全個室・ベンチ席。</li>
+      <li>利用動機：①<b>高級感ある地下の隠れ家</b>（グレー基調・ステンドグラス・大理石）、②<b>わかりやすい和牛名物</b>、③<b>「高見えコスパ」</b>（5,500円帯でも"破格"とUGC）。</li>
+    </ul>
+
+    <h2>6. ビジネス・ファクト（補足）</h2>
+    <ul class="t">
+      <li>運営 <b>株式会社LINK STYLE</b>（代表 馬淵和也・設立2017・法人番号5190001029288）。先行「大衆ビストロジル」の流れを汲む初の洋業態。</li>
+      <li>新宿区西新宿7-15-17 東光ビルB1F・地下／約27〜30坪68〜70席（媒体差）／開業2か月(2025/3)で<b>月商1,350万</b>／想定客単価<b>5,500円</b>。</li>
+      <li>フード中心495〜1,078円・ドリンク638〜748円・2H飲み放題コース5,000円〜。食べログ3.42/752件。</li>
+    </ul>
+
+    <h2>7. 販促インサイト ／ 自社への持ち帰り</h2>
+    <ol class="ol">
+      <li><b>二層運用</b>：公式は「告知ハブ＋道案内ハイライト（来店導線）」に絞り、日々のエンゲージはインフルエンサーPRに外注。人手をかけず新店を立ち上げる再現性。</li>
+      <li><b>"発射台"型ローンチ</b>：新店OPEN時にグルメ系UGCを同時多発で束ねる。#PR 明記でステマ回避しつつ物量で面を取る。</li>
+      <li><b>希少性ナラティブの横展開</b>：「予約困難店が出店」を渋谷・池袋で再利用。先行店の実績をブランド資産に転用。</li>
+      <li><b>ビジュアルの規格化</b>：名物＋九谷焼風の器＋食用花＋テロップで、どの店でも同じ"映え"を量産。</li>
+      <li><b>真似るなら</b>：①名物2品をビジュアル規格化 → ②OPEN時のインフルエンサー一斉PRをパッケージ化 → ③公式は「道案内」で来店導線に集中。</li>
+    </ol>
+
+    <h2>【独自】店間SNS強弱 ＋ ドミナント戦略マップ</h2>
+    <p class="t">複数店を持つ本リサーチ集ならではの横断比較。同じLINK STYLEでも自社IGの規模差が大きい。</p>
+    <div class="cmp">
+      <div class="c"><div class="hh">つむぎ堂 統括</div><div class="v">約2.2万</div></div>
+      <div class="c"><div class="hh">リタ 新宿</div><div class="v">約9,400</div></div>
+      <div class="c"><div class="hh">ひまり堂 恵比寿</div><div class="v">1,424</div></div>
+    </div>
+    <div class="ins"><b>示唆</b> → <b>つむぎ堂＝認知資産／ひまり堂＝伸びしろ（自社発信が弱点）／リタ＝新業態で順調</b>。⑨販促の打ち手は店ごとに変える。</div>
+    <h3>出店タイムライン（2017創業〜）</h3>
+    <div class="tl">
+      <div class="e"><span class="d">2017</span> 川越で創業「鶏の吉助」 → 千葉「サワマル」</div>
+      <div class="e"><span class="d">2022.3</span> 新宿「つむぎ堂」＝都内初出店（Z世代向け）</div>
+      <div class="e"><span class="d">2023</span> 新宿「ヒロキ倶楽部」</div>
+      <div class="e"><span class="d">2024.4</span> 恵比寿「ひまり堂」＝全世代・展開型</div>
+      <div class="e"><span class="d">2025.2</span> 新宿「ビストロ リタ」＝初の洋業態</div>
+      <div class="e"><span class="d">2025.9 → 2026.3</span> つむぎ堂 渋谷 → 池袋／2026年に5店出店計画</div>
+    </div>
+    <h3>ブランド別の収益構造</h3>
+    <table class="tbl">
+      <tr><th>ブランド</th><th>規模</th><th>月商 / 客単価</th></tr>
+      <tr><td class="em">つむぎ堂(新宿)</td><td>23坪</td><td>月商1,700万</td></tr>
+      <tr><td class="em">ヒロキ倶楽部</td><td>14坪</td><td>月商1,100万</td></tr>
+      <tr><td class="em">ひまり堂(恵比寿)</td><td>23坪52席</td><td>客単価3,900円</td></tr>
+      <tr><td class="em">リタ(新宿)</td><td>27坪68席</td><td>月商1,350万・客単価5,500円</td></tr>
+    </table>
+
+    <h2>8. 調査メモ・制約（透明性のため）</h2>
+    <div class="memo">
+      ・本店は fork元のIG実地調査の対象外。フォロワー数・UGCは<b>Web検索／公開投稿</b>で確認（2026-06時点・変動）。<br>
+      ・Instagram内部の精密指標（投稿頻度・各投稿いいね・保存数）は<b>非ログインのレート制限</b>で取得困難なため定性評価。<br>
+      ・【独自】の店間比較・ドミナント戦略マップは、本リサーチ集が複数店を持つ強みで追加した横断分析。
     </div>
 
-    <div class="grp">店間 SNS 強弱（自社アカウント）</div>
-    <div class="ana">
-      <div class="cmp">
-        <div class="c"><div class="h">つむぎ堂 公式</div><div class="v">約2.2万</div></div>
-        <div class="c"><div class="h">リタ 新宿</div><div class="v">約9,400</div></div>
-        <div class="c"><div class="h">ひまり堂 恵比寿</div><div class="v">1,424</div></div>
-      </div>
-      <div class="ins" style="margin-top:10px">示唆 → 同じLINK STYLEでも自社IGの規模差が大きい。<b>つむぎ堂＝認知資産／ひまり堂＝伸びしろ（自社発信が弱点）／リタ＝新業態で順調</b>。⑨販促の打ち手は店ごとに変える必要がある。</div>
-    </div>
-
-    <div class="grp">LINK STYLE ドミナント戦略マップ（グループ）</div>
-    <div class="ana">
-      <div class="sec"><b>出店タイムライン（2017創業〜）</b>
-        <div class="tl">
-          <div class="e"><span class="d">2017</span> <span class="t">川越で創業「個室居酒屋 鶏の吉助」</span></div>
-          <div class="e"><span class="d">〜千葉</span> <span class="t">「ネオ大衆酒場 サワマル」</span></div>
-          <div class="e"><span class="d">2022.3</span> <span class="t">新宿「酒場つむぎ堂」＝都内初出店（Z世代向け）</span></div>
-          <div class="e"><span class="d">2023</span> <span class="t">新宿「めしや ヒロキ倶楽部」</span></div>
-          <div class="e"><span class="d">2024.4</span> <span class="t">恵比寿「酒場ひまり堂」＝全世代・展開型</span></div>
-          <div class="e"><span class="d">2025.2</span> <span class="t">新宿「ビストロ リタ」＝初の洋業態</span></div>
-          <div class="e"><span class="d">2025.9 → 2026.3</span> <span class="t">つむぎ堂 渋谷 → 池袋へ多店化／2026年に5店出店計画</span></div>
-        </div>
-      </div>
-      <div class="sec"><b>ブランド別の収益構造</b>
-        <table class="tbl"><tr><th>ブランド</th><th>規模</th><th>月商 / 客単価</th></tr>
-          <tr><td class="em">つむぎ堂(新宿)</td><td>23坪</td><td>月商1,700万</td></tr>
-          <tr><td class="em">ヒロキ倶楽部</td><td>14坪</td><td>月商1,100万</td></tr>
-          <tr><td class="em">ひまり堂(恵比寿)</td><td>23坪52席</td><td>客単価3,900円</td></tr>
-          <tr><td class="em">リタ(新宿)</td><td>27坪68席</td><td>月商1,350万・客単価5,500円</td></tr>
-        </table>
-      </div>
-      <div class="strat">
-        <div class="q">“ 馬淵和也氏は「WEBを使った販促を得意とする」 ”</div>
-        <ul>
-          <li><b>公式アカウント＝告知・来店導線に特化</b>（道案内ハイライト等の一方向発信）</li>
-          <li><b>日々のエンゲージはインフルエンサーPR（#pr）に外注</b>＝料理名・価格を列挙する規格化リール/投稿</li>
-          <li><b>新店OPEN時に同時多発UGC</b>で「映え×大衆価格」の認知を一気に立ち上げ</li>
-          <li>名物（茹でタン/和牛ハンバーグ等）を<b>口コミワードとして固定</b>し拡散を統一</li>
-        </ul>
-      </div>
-      <div class="dn">※ フォロワー数は取得時点の参考値（変動）。Instagram内部指標（投稿数・各投稿のいいね）は非ログインでは取得困難なため、UGCは公開投稿の傾向から定性評価。出店/月商は各記事(food-stadium / 飲食店ドットコム / ぐるなび)に基づく。</div>
-    </div>
-
+    <h2>全SNS横断リサーチ（探索リンク）</h2>
+    <p class="t">公開SNSの検索結果を開く launchpad。キーワードを変えると全リンクが切り替わる（店名・名物・エリアでも可）。</p>
     <div class="kwbox">
       <label>検索キーワード</label>
       <input id="kw" type="text" value="ビストロリタ 新宿">
-      <div class="note">ハッシュタグは空白を除いた形（例: <code>つむぎ堂渋谷</code>）で生成されます。店名／メニュー名／エリアに変えてもOK。</div>
+      <div class="note">ハッシュタグは空白を除いた形（例: つむぎ堂渋谷）で生成。</div>
     </div>
-
-    <div class="grp">公式・関連アカウント（判明分）</div>
-    <div class="accs">
-      <a class="acc" href="https://www.instagram.com/rita_shinjuku/" target="_blank" rel="noopener">
-        <div class="pf">Instagram・公式</div><div class="hd">@rita_shinjuku</div><div class="mt">フォロワー 約9,400（変動あり）</div>
-      </a>
-      <a class="acc" href="https://x.com/kazuya_mabuchi" target="_blank" rel="noopener">
-        <div class="pf">X・運営代表</div><div class="hd">@kazuya_mabuchi</div><div class="mt">馬淵和也（LINK STYLE 代表）</div>
-      </a>
+    <div style="margin:6px 0 12px;">
+      <a class="acc" href="https://www.instagram.com/rita_shinjuku/" target="_blank" rel="noopener">@rita_shinjuku（公式・約9,400）</a>
+      <a class="acc" href="https://x.com/kazuya_mabuchi" target="_blank" rel="noopener">X @kazuya_mabuchi（代表）</a>
     </div>
-
-    <div class="grp">各SNS リサーチリンク</div>
     <div id="plats"></div>
 
-    <div class="note2">
-      ※ 公開SNSの検索結果を開くリンク集です（このサイトからデータ取得はしません）。アカウントのフォロワー数等は取得時点の参考値で変動します。<br>
-      見つけた評判・UGC・PR投稿の要点は <b>訪問メモ</b> か、後で「リサーチに反映して」で report に取り込めます。
-    </div>
+    <footer>
+      <b>出典</b><br>
+      Instagram: <a href="https://www.instagram.com/tsumugido_shinjuku/">@tsumugido_shinjuku</a> ／ <a href="https://www.instagram.com/sakaba_tsumugido/">@sakaba_tsumugido</a>（個別投稿 embed: <a href="https://www.instagram.com/p/DO5CVl8AcXj/">@tabetaro リール</a> ほか）<br>
+      fork元IG実地調査: <a href="https://github.com/ToshikazuHirano333/insyoku-research">ToshikazuHirano333/insyoku-research</a>（tsumugido/report.md・2026-06-22）<br>
+      飲食店ドットコム <a href="https://www.inshokuten.com/foodist/article/6917/">記事6917</a> ／ ぐるなび通信 <a href="https://pro.gnavi.co.jp/magazine/t_res/cat_2/a_4292/">a_4292</a> ／ フードスタジアム <a href="https://food-stadium.com/headline/32624/">32624</a> ／ 食べログ・PR TIMES。数値は取得時点の表示値で変動。
+    </footer>
   </div>
 
   <script>
   (function(){
-    // platform: name, icon label, color, links[{label, tpl}]  ( __KW__ / __TAG__ を置換 )
-    var PLATS = [
-      {n:"Instagram", c:"#c13584", links:[
-        {l:"ハッシュタグ", u:"https://www.instagram.com/explore/tags/__TAG__/"},
-        {l:"キーワード検索", u:"https://www.instagram.com/explore/search/keyword/?q=__KW__"}
-      ]},
-      {n:"X (Twitter)", c:"#111", links:[
-        {l:"最新", u:"https://x.com/search?q=__KW__&f=live"},
-        {l:"話題", u:"https://x.com/search?q=__KW__"}
-      ]},
-      {n:"TikTok", c:"#000", links:[
-        {l:"ハッシュタグ", u:"https://www.tiktok.com/tag/__TAG__"},
-        {l:"検索", u:"https://www.tiktok.com/search?q=__KW__"}
-      ]},
-      {n:"YouTube", c:"#ff0000", links:[
-        {l:"動画検索", u:"https://www.youtube.com/results?search_query=__KW__"}
-      ]},
-      {n:"Threads", c:"#000", links:[
-        {l:"検索", u:"https://www.threads.net/search?q=__KW__"}
-      ]},
-      {n:"Google", c:"#4285f4", links:[
-        {l:"口コミ", u:"https://www.google.com/search?q=__KW__%20口コミ"},
-        {l:"マップ", u:"https://www.google.com/maps/search/__KW__"}
-      ]},
-      {n:"グルメ媒体", c:"#7a2e3b", links:[
-        {l:"食べログ", u:"https://tabelog.com/rstLst/?sw=__KW__"},
-        {l:"Retty(Google)", u:"https://www.google.com/search?q=site:retty.me%20__KW__"}
-      ]}
+    var PLATS=[
+      {n:"Instagram",c:"#c13584",links:[{l:"ハッシュタグ",u:"https://www.instagram.com/explore/tags/__TAG__/"},{l:"検索",u:"https://www.instagram.com/explore/search/keyword/?q=__KW__"}]},
+      {n:"X (Twitter)",c:"#111",links:[{l:"最新",u:"https://x.com/search?q=__KW__&f=live"},{l:"話題",u:"https://x.com/search?q=__KW__"}]},
+      {n:"TikTok",c:"#000",links:[{l:"タグ",u:"https://www.tiktok.com/tag/__TAG__"},{l:"検索",u:"https://www.tiktok.com/search?q=__KW__"}]},
+      {n:"YouTube",c:"#ff0000",links:[{l:"動画",u:"https://www.youtube.com/results?search_query=__KW__"}]},
+      {n:"Threads",c:"#000",links:[{l:"検索",u:"https://www.threads.net/search?q=__KW__"}]},
+      {n:"Google",c:"#4285f4",links:[{l:"口コミ",u:"https://www.google.com/search?q=__KW__%20口コミ"},{l:"マップ",u:"https://www.google.com/maps/search/__KW__"}]},
+      {n:"グルメ媒体",c:"#7a2e3b",links:[{l:"食べログ",u:"https://tabelog.com/rstLst/?sw=__KW__"},{l:"Retty",u:"https://www.google.com/search?q=site:retty.me%20__KW__"}]}
     ];
-    var host = document.getElementById('plats');
+    var host=document.getElementById('plats');
     PLATS.forEach(function(p){
-      var d=document.createElement('div'); d.className='plat';
-      var links = p.links.map(function(lk){
-        return '<a data-tpl="'+lk.u+'" target="_blank" rel="noopener">'+lk.l+' ↗</a>';
-      }).join('');
+      var d=document.createElement('div');d.className='plat';
+      var links=p.links.map(function(lk){return '<a data-tpl="'+lk.u+'" target="_blank" rel="noopener">'+lk.l+' ↗</a>';}).join('');
       d.innerHTML='<div class="pt"><span class="ic" style="background:'+p.c+'">'+p.n.charAt(0)+'</span>'+p.n+'</div><div class="links">'+links+'</div>';
       host.appendChild(d);
     });
-    var anchors = Array.prototype.slice.call(document.querySelectorAll('[data-tpl]'));
+    var anchors=Array.prototype.slice.call(document.querySelectorAll('[data-tpl]'));
     function build(){
       var kw=(document.getElementById('kw').value||'').trim();
       var tag=kw.replace(/[\s#　]/g,'');
-      var KW=encodeURIComponent(kw), TAG=encodeURIComponent(tag);
-      anchors.forEach(function(a){
-        a.href=a.getAttribute('data-tpl').replace(/__KW__/g,KW).replace(/__TAG__/g,TAG);
-      });
+      var KW=encodeURIComponent(kw),TAG=encodeURIComponent(tag);
+      anchors.forEach(function(a){a.href=a.getAttribute('data-tpl').replace(/__KW__/g,KW).replace(/__TAG__/g,TAG);});
     }
-    document.getElementById('kw').addEventListener('input', build);
-    build();
+    document.getElementById('kw').addEventListener('input',build);build();
   })();
   </script>
 </body>
